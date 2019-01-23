@@ -10,6 +10,7 @@ namespace DataAccess.Repositories
 {
     public class RepositoryBase<T>:IRepositoryBase<T> where T:class
     {
+        private bool disposed = false;
         public CustomerDbContext DbContext { get; }
 
         public RepositoryBase(CustomerDbContext dbContext)
@@ -23,7 +24,12 @@ namespace DataAccess.Repositories
         /// <exception cref="NotImplementedException"></exception>
         public async Task<IEnumerable<T>> FindAllAsync()
         {
-            return await DbContext.Set<T>().ToListAsync();
+            return await DbContext.Set<T>().AsNoTracking().ToListAsync();
+        }
+
+        public IEnumerable<T> FindAll()
+        {
+            return DbContext.Set<T>().AsNoTracking().ToList();
         }
 
         /// <summary>-----------------------------------------
@@ -34,9 +40,14 @@ namespace DataAccess.Repositories
         /// <exception cref="NotImplementedException"></exception>
         public async Task<IEnumerable<T>> FindByParametersAsync(Expression<Func<T, bool>> expression)
         {
-            return await DbContext.Set<T>().Where(expression).ToListAsync();
+            return await DbContext.Set<T>().Where(expression).AsNoTracking().ToListAsync();
         }
-        
+
+        public IEnumerable<T> FindByParameters(Expression<Func<T, bool>> expression)
+        {
+           return DbContext.Set<T>().Where(expression).AsNoTracking().ToList();
+        }
+
         /// <summary>----------------------------------------
         /// Create New Record for the entity
         /// </summary>---------------------------------------
@@ -46,7 +57,11 @@ namespace DataAccess.Repositories
         {
             DbContext.Set<T>().Add(entity);
         }
-
+       
+        /// <summary>----------------------------------------
+        /// /Create Range of record
+        /// </summary>---------------------------------------
+        /// <param name="entities"></param>
         public void CreateRange(IEnumerable<T> entities)
         {
            DbContext.Set<T>().AddRange(entities);
@@ -87,6 +102,20 @@ namespace DataAccess.Repositories
         public void DeleteRange(IEnumerable<T> entities)
         {
             DbContext.Set<T>().RemoveRange(entities);
+        }
+        protected virtual void Dispose(bool disposing)  
+        {
+            if (disposed) return;
+            if (disposing)  
+            {  
+                DbContext.Dispose();  
+            }  
+            disposed = true;
+        }  
+        public void Dispose()
+        {
+            Dispose(true);  
+            GC.SuppressFinalize(this);
         }
     }
 }

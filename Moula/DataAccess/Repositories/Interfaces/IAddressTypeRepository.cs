@@ -1,6 +1,6 @@
 namespace DataAccess.Repositories
 {
-    public class CustomerReporsitory
+    public interface IAddressTypeRepository
     {
         
     }
