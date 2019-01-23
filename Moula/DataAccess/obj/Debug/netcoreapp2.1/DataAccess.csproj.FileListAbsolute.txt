@@ -1,0 +1,11 @@
+/home/bill/RiderProjects/MoulaTest/Moula/DataAccess/bin/Debug/netcoreapp2.1/DataAccess.deps.json
+/home/bill/RiderProjects/MoulaTest/Moula/DataAccess/bin/Debug/netcoreapp2.1/DataAccess.runtimeconfig.json
+/home/bill/RiderProjects/MoulaTest/Moula/DataAccess/bin/Debug/netcoreapp2.1/DataAccess.runtimeconfig.dev.json
+/home/bill/RiderProjects/MoulaTest/Moula/DataAccess/bin/Debug/netcoreapp2.1/DataAccess.dll
+/home/bill/RiderProjects/MoulaTest/Moula/DataAccess/bin/Debug/netcoreapp2.1/DataAccess.pdb
+/home/bill/RiderProjects/MoulaTest/Moula/DataAccess/obj/Debug/netcoreapp2.1/DataAccess.csprojAssemblyReference.cache
+/home/bill/RiderProjects/MoulaTest/Moula/DataAccess/obj/Debug/netcoreapp2.1/DataAccess.csproj.CoreCompileInputs.cache
+/home/bill/RiderProjects/MoulaTest/Moula/DataAccess/obj/Debug/netcoreapp2.1/DataAccess.AssemblyInfoInputs.cache
+/home/bill/RiderProjects/MoulaTest/Moula/DataAccess/obj/Debug/netcoreapp2.1/DataAccess.AssemblyInfo.cs
+/home/bill/RiderProjects/MoulaTest/Moula/DataAccess/obj/Debug/netcoreapp2.1/DataAccess.dll
+/home/bill/RiderProjects/MoulaTest/Moula/DataAccess/obj/Debug/netcoreapp2.1/DataAccess.pdb
