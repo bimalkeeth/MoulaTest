@@ -1,13 +1,13 @@
 ﻿{
   "version": "1.0.0",
   "restore": {
-    "projectUniqueName": "C:\\Users\\bkaluarachchi\\RiderProjects\\MoulaTest\\Moula\\MoulaCustomers\\MoulaCustomers.csproj",
+    "projectUniqueName": "/home/bill/RiderProjects/MoulaTest/Moula/MoulaCustomers/MoulaCustomers.csproj",
     "projectName": "MoulaCustomers",
-    "projectPath": "C:\\Users\\bkaluarachchi\\RiderProjects\\MoulaTest\\Moula\\MoulaCustomers\\MoulaCustomers.csproj",
-    "outputPath": "C:\\Users\\bkaluarachchi\\RiderProjects\\MoulaTest\\Moula\\MoulaCustomers\\obj\\",
+    "projectPath": "/home/bill/RiderProjects/MoulaTest/Moula/MoulaCustomers/MoulaCustomers.csproj",
+    "outputPath": "/home/bill/RiderProjects/MoulaTest/Moula/MoulaCustomers/obj/",
     "projectStyle": "PackageReference",
     "fallbackFolders": [
-      "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+      "/usr/share/dotnet/sdk/NuGetFallbackFolder"
     ],
     "originalTargetFrameworks": [
       "netcoreapp2.1"

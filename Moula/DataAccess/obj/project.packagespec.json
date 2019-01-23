@@ -1,13 +1,13 @@
 ﻿{
   "version": "1.0.0",
   "restore": {
-    "projectUniqueName": "C:\\Users\\bkaluarachchi\\RiderProjects\\MoulaTest\\Moula\\DataAccess\\DataAccess.csproj",
+    "projectUniqueName": "/home/bill/RiderProjects/MoulaTest/Moula/DataAccess/DataAccess.csproj",
     "projectName": "DataAccess",
-    "projectPath": "C:\\Users\\bkaluarachchi\\RiderProjects\\MoulaTest\\Moula\\DataAccess\\DataAccess.csproj",
-    "outputPath": "C:\\Users\\bkaluarachchi\\RiderProjects\\MoulaTest\\Moula\\DataAccess\\obj\\",
+    "projectPath": "/home/bill/RiderProjects/MoulaTest/Moula/DataAccess/DataAccess.csproj",
+    "outputPath": "/home/bill/RiderProjects/MoulaTest/Moula/DataAccess/obj/",
     "projectStyle": "PackageReference",
     "fallbackFolders": [
-      "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+      "/usr/share/dotnet/sdk/NuGetFallbackFolder"
     ],
     "originalTargetFrameworks": [
       "netcoreapp2.1"

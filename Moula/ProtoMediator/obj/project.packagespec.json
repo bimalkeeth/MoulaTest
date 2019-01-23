@@ -1,13 +1,13 @@
 ﻿{
   "version": "1.0.0",
   "restore": {
-    "projectUniqueName": "C:\\Users\\bkaluarachchi\\RiderProjects\\MoulaTest\\Moula\\ProtoMediator\\ProtoMediator.csproj",
+    "projectUniqueName": "/home/bill/RiderProjects/MoulaTest/Moula/ProtoMediator/ProtoMediator.csproj",
     "projectName": "ProtoMediator",
-    "projectPath": "C:\\Users\\bkaluarachchi\\RiderProjects\\MoulaTest\\Moula\\ProtoMediator\\ProtoMediator.csproj",
-    "outputPath": "C:\\Users\\bkaluarachchi\\RiderProjects\\MoulaTest\\Moula\\ProtoMediator\\obj\\",
+    "projectPath": "/home/bill/RiderProjects/MoulaTest/Moula/ProtoMediator/ProtoMediator.csproj",
+    "outputPath": "/home/bill/RiderProjects/MoulaTest/Moula/ProtoMediator/obj/",
     "projectStyle": "PackageReference",
     "fallbackFolders": [
-      "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+      "/usr/share/dotnet/sdk/NuGetFallbackFolder"
     ],
     "originalTargetFrameworks": [
       "netcoreapp2.1"
