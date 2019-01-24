@@ -5,7 +5,7 @@ using DataAccess.Entities;
 
 namespace DataAccess.Repositories
 {
-    public interface IContactRepository
+    public interface IContactRepository:IRepositoryBase<Contacts>
     {
         /// <summary>
         /// Get all contacts with attached details

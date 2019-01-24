@@ -6,6 +6,15 @@
 
     <ItemGroup>
       <ProjectReference Include="..\CommonContracts\CommonContracts.csproj" />
+      <ProjectReference Include="..\DataAccess\DataAccess.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="AutoMapper" Version="8.0.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Mapppers" />
     </ItemGroup>
 
 </Project>

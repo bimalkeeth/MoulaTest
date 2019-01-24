@@ -5,7 +5,7 @@ using DataAccess.Entities;
 
 namespace DataAccess.Repositories
 {
-    public interface ICustomerRepository
+    public interface ICustomerRepository:IRepositoryBase<Customers>
     {
         /// <summary>
         /// Get customers with detail data by Filters

@@ -17,6 +17,9 @@
         "projectReferences": {
           "/home/bill/RiderProjects/MoulaTest/Moula/CommonContracts/CommonContracts.csproj": {
             "projectPath": "/home/bill/RiderProjects/MoulaTest/Moula/CommonContracts/CommonContracts.csproj"
+          },
+          "/home/bill/RiderProjects/MoulaTest/Moula/DataAccess/DataAccess.csproj": {
+            "projectPath": "/home/bill/RiderProjects/MoulaTest/Moula/DataAccess/DataAccess.csproj"
           }
         }
       }
@@ -30,6 +33,10 @@
   "frameworks": {
     "netcoreapp2.1": {
       "dependencies": {
+        "AutoMapper": {
+          "target": "Package",
+          "version": "[8.0.0, )"
+        },
         "Microsoft.NETCore.App": {
           "suppressParent": "All",
           "target": "Package",

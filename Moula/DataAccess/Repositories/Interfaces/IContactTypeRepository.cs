@@ -5,7 +5,7 @@ using DataAccess.Entities;
 
 namespace DataAccess.Repositories
 {
-    public interface IContactTypeRepository
+    public interface IContactTypeRepository:IRepositoryBase<ContactType>
     {
         /// <summary>
         /// Get Contact Type with Detail by TypeId

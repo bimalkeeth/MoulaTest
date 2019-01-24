@@ -5,7 +5,7 @@ using DataAccess.Entities;
 
 namespace DataAccess.Repositories
 {
-    public interface IAddressRepository
+    public interface IAddressRepository:IRepositoryBase<Address>
     {
         IEnumerable<Address> GetAllAddressWithDetail();
         IEnumerable<Address> GetAddressWithDetailByAddressParameter(Expression<Func<Address,bool>> expression)

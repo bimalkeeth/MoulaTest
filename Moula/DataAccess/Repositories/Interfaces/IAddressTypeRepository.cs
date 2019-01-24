@@ -5,7 +5,7 @@ using DataAccess.Entities;
 
 namespace DataAccess.Repositories
 {
-    public interface IAddressTypeRepository
+    public interface IAddressTypeRepository:IRepositoryBase<AddressType>
     {
         /// <summary>
         /// Get Address Type By Id with Included address Collection
