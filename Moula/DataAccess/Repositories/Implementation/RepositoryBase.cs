@@ -4,11 +4,13 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 using DataAccess.Entities;
+using DataAccess.Repositories.Implementation;
+using DataAccess.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
 namespace DataAccess.Repositories
 {
-    public class RepositoryBase<T>:IRepositoryBase<T> where T:class
+    public class RepositoryBase<T>:IRepositoryBase<T>,IRepositoryRoot where T:class
     {
         private bool disposed = false;
         public CustomerDbContext DbContext { get; }

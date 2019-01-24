@@ -1,13 +1,13 @@
 ﻿{
   "version": "1.0.0",
   "restore": {
-    "projectUniqueName": "/home/bill/RiderProjects/MoulaTest/Moula/BIRuleManager/BIRuleManager.csproj",
+    "projectUniqueName": "C:\\Users\\bkaluarachchi\\RiderProjects\\MoulaTest\\Moula\\BIRuleManager\\BIRuleManager.csproj",
     "projectName": "BIRuleManager",
-    "projectPath": "/home/bill/RiderProjects/MoulaTest/Moula/BIRuleManager/BIRuleManager.csproj",
-    "outputPath": "/home/bill/RiderProjects/MoulaTest/Moula/BIRuleManager/obj/",
+    "projectPath": "C:\\Users\\bkaluarachchi\\RiderProjects\\MoulaTest\\Moula\\BIRuleManager\\BIRuleManager.csproj",
+    "outputPath": "C:\\Users\\bkaluarachchi\\RiderProjects\\MoulaTest\\Moula\\BIRuleManager\\obj\\",
     "projectStyle": "PackageReference",
     "fallbackFolders": [
-      "/usr/share/dotnet/sdk/NuGetFallbackFolder"
+      "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
     ],
     "originalTargetFrameworks": [
       "netcoreapp2.1"

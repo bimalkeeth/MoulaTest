@@ -1,6 +1,6 @@
 namespace BIRuleProcessor.Interfaces
 {
-    public interface IContactProcessor
+    public interface IAddressRuleProcessor
     {
         
     }
