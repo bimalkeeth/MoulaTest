@@ -1,20 +1,24 @@
 ﻿{
   "version": "1.0.0",
   "restore": {
-    "projectUniqueName": "C:\\Users\\bkaluarachchi\\RiderProjects\\MoulaTest\\Moula\\BIRuleProcessor\\BIRuleProcessor.csproj",
+    "projectUniqueName": "/home/bill/RiderProjects/MoulaTest/Moula/BIRuleProcessor/BIRuleProcessor.csproj",
     "projectName": "BIRuleProcessor",
-    "projectPath": "C:\\Users\\bkaluarachchi\\RiderProjects\\MoulaTest\\Moula\\BIRuleProcessor\\BIRuleProcessor.csproj",
-    "outputPath": "C:\\Users\\bkaluarachchi\\RiderProjects\\MoulaTest\\Moula\\BIRuleProcessor\\obj\\",
+    "projectPath": "/home/bill/RiderProjects/MoulaTest/Moula/BIRuleProcessor/BIRuleProcessor.csproj",
+    "outputPath": "/home/bill/RiderProjects/MoulaTest/Moula/BIRuleProcessor/obj/",
     "projectStyle": "PackageReference",
     "fallbackFolders": [
-      "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+      "/usr/share/dotnet/sdk/NuGetFallbackFolder"
     ],
     "originalTargetFrameworks": [
       "netcoreapp2.1"
     ],
     "frameworks": {
       "netcoreapp2.1": {
-        "projectReferences": {}
+        "projectReferences": {
+          "/home/bill/RiderProjects/MoulaTest/Moula/CommonContracts/CommonContracts.csproj": {
+            "projectPath": "/home/bill/RiderProjects/MoulaTest/Moula/CommonContracts/CommonContracts.csproj"
+          }
+        }
       }
     },
     "warningProperties": {
