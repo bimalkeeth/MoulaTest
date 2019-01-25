@@ -11,5 +11,18 @@ namespace BIRuleProcessor.Interfaces
         /// <param name="addressList"></param>
         /// <returns></returns>
         int CreateAddress(IEnumerable<AddressBo> addressList);
+
+        /// <summary>
+        /// Get Address with Related Detail
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        AddressBo GetAddressWithDetailById(int id);
+
+        /// <summary>
+        /// Get all Address with Detail
+        /// </summary>
+        /// <returns></returns>
+        IEnumerable<AddressBo> GetAllAddressWithDetail();
     }
 }

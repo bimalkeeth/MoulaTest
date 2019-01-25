@@ -8,6 +8,6 @@ namespace DataAccess.Repositories
     public interface IAddressRepository:IRepositoryBase<Address>
     {
         IEnumerable<Address> GetAllAddressWithDetail();
-        IEnumerable<Address> GetAddressWithDetailByAddressParameter(Expression<Func<Address,bool>> expression)
+        IEnumerable<Address> GetAddressWithDetailByAddressParameter(Expression<Func<Address, bool>> expression);
     }
 }

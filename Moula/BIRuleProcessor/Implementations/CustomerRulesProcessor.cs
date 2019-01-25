@@ -1,4 +1,6 @@
+using System.Collections.Generic;
 using System.Data;
+using AutoMapper;
 using BIRuleProcessor.Interfaces;
 using CommonContracts;
 using CommonContracts.Resources;
@@ -35,6 +37,12 @@ namespace BIRuleProcessor.Implementations
             };
             _unitOfWork.CustomerRepo.Create(customerEntity);
             return _unitOfWork.SaveChanges();
+        }
+
+        public IEnumerable<CustomerDetailBo> GetTopCustomers(int topCount)
+        {
+           var data=_unitOfWork.CustomerRepo.GetCustomerWithDetailByWithOrder(topCount);
+          return Mapper.Map<IEnumerable<Customers>, IEnumerable<CustomerDetailBo>>(data);
         }
     }
 }

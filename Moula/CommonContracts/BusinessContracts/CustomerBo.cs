@@ -10,7 +10,7 @@ namespace CommonContracts
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public DateTime DateOfBirth { get; set; }
-        public IEnumerable<CustomerContactsBo> Contacts { get; set; }
-        public IEnumerable<CustomerAddressBo> Address { get; set; }
+        public IEnumerable<CustomerContactsBo> CustomerContacts { get; set; }
+        public IEnumerable<CustomerAddressBo> CustomerAddress { get; set; }
     }
 }

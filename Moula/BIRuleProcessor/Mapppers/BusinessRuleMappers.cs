@@ -1,3 +1,4 @@
+using System.Linq;
 using AutoMapper;
 using CommonContracts;
 using DataAccess.Entities;
@@ -62,7 +63,33 @@ namespace BIRuleProcessor.Mapppers
                     .ForMember(des => des.Address, src => src.MapFrom(d => d.Address))
                     .IgnoreAllPropertiesWithAnInaccessibleSetter().ReverseMap();
                 
-
+                CreateMap<Customers, CustomerBo>()
+                    .ForMember(des => des.Id, src => src.MapFrom(d => d.Id))
+                    .ForMember(des => des.CustomerAddress, src => src.MapFrom(d => d.CustomerAddress))
+                    .ForMember(des => des.CustomerContacts, src => src.MapFrom(d => d.CustomerContacts))
+                    .ForMember(des => des.LastName, src => src.MapFrom(d => d.LastName))
+                    .ForMember(des => des.CustomerCode, src => src.MapFrom(d => d.CustomerCode))
+                    .ForMember(des => des.DateOfBirth, src => src.MapFrom(d => d.DateOfBirth))
+                    .IgnoreAllPropertiesWithAnInaccessibleSetter().ReverseMap();
+                
+                
+                
+                CreateMap<Customers, CustomerDetailBo>()
+                    .ForMember(des => des.Id, src => src.MapFrom(d => d.Id))
+                    .ForMember(des => des.LastName, src => src.MapFrom(d => d.LastName))
+                    .ForMember(des => des.CustomerCode, src => src.MapFrom(d => d.CustomerCode))
+                    .ForMember(des => des.DateOfBirth, src => src.MapFrom(d => d.DateOfBirth))
+                    .IgnoreAllPropertiesWithAnInaccessibleSetter().ReverseMap().AfterMap((target, source) =>
+                        {
+                            target.FullName = $"{source.FirstName} {source.LastName}";
+                            target.Email = source.CustomerContacts.Select(s =>
+                                new
+                                {
+                                    s.Contact.Contact,
+                                    s.Contact.ContactType.ContactTypeAbbr
+                                }).FirstOrDefault(d => d.ContactTypeAbbr == "EMAIL")
+                                ?.Contact;
+                        });
             }
         }
     }e
