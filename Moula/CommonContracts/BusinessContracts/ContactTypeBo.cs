@@ -5,5 +5,7 @@ namespace CommonContracts
         public int Id { get; set; }
         public string ContactTypeAbbr { get; set; }
         public string ContactTypeName { get; set; }
+        
+        
     }
 }

@@ -1,7 +1,9 @@
 using System.Collections.Generic;
+using AutoMapper;
 using BIRuleProcessor.Interfaces;
 using CommonContracts;
 using DataAccess;
+using DataAccess.Entities;
 
 namespace BIRuleProcessor.Implementations
 {
@@ -16,8 +18,9 @@ namespace BIRuleProcessor.Implementations
         
         public int CreateAddress(IEnumerable<AddressBo> addressList)
         {
-            
-            _unitOfWork.AddressRepo.CreateRange(addressList);
+            var datalist = Mapper.Map<IEnumerable<AddressBo>, IEnumerable<Address>>(addressList);
+            _unitOfWork.AddressRepo.CreateRange(datalist);
+            return _unitOfWork.SaveChanges();
         }
     }
 }

@@ -14,7 +14,17 @@
     ],
     "frameworks": {
       "netcoreapp2.1": {
-        "projectReferences": {}
+        "projectReferences": {
+          "/home/bill/RiderProjects/MoulaTest/Moula/BIRuleManager/BIRuleManager.csproj": {
+            "projectPath": "/home/bill/RiderProjects/MoulaTest/Moula/BIRuleManager/BIRuleManager.csproj"
+          },
+          "/home/bill/RiderProjects/MoulaTest/Moula/BIRuleProcessor/BIRuleProcessor.csproj": {
+            "projectPath": "/home/bill/RiderProjects/MoulaTest/Moula/BIRuleProcessor/BIRuleProcessor.csproj"
+          },
+          "/home/bill/RiderProjects/MoulaTest/Moula/DataAccess/DataAccess.csproj": {
+            "projectPath": "/home/bill/RiderProjects/MoulaTest/Moula/DataAccess/DataAccess.csproj"
+          }
+        }
       }
     },
     "warningProperties": {

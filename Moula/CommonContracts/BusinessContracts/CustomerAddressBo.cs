@@ -7,5 +7,6 @@ namespace CommonContracts
         public AddressBo Address { get; set; }
         public int CustomerId { get; set; }
         public CustomerBo Customer { get; set; }
+        public bool IsPrimary { get; set; }
     }
 }
