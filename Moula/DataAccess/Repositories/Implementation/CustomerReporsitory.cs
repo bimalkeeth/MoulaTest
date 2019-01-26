@@ -9,16 +9,16 @@ namespace DataAccess.Repositories
 {
     public class CustomerRepository:RepositoryBase<Customers>,ICustomerRepository
     {
-        public CustomerDbContext DbContext { get; }
+        public CustomerDbContext dbContext { get; }
 
         public CustomerRepository(CustomerDbContext dbContext) : base(dbContext)
         {
-            DbContext = dbContext;
+            this.dbContext = dbContext;
         }
 
         public IEnumerable<Customers> GetCustomerWithDetailByFilter(Expression<Func<Customers, bool>> expression)
         {
-           return DbContext.Customers
+           return dbContext.Customers
                 .Include(s => s.CustomerAddress)
                 .Include(s => s.CustomerContacts)
                 .Include(s => s.CustomerAddress.Select(a => a.Address))
@@ -28,7 +28,7 @@ namespace DataAccess.Repositories
         }
         public IEnumerable<Customers> GetCustomerWithDetailByWithOrder(int topCount)
         {
-            return DbContext.Customers
+            return dbContext.Customers
                 .Include(s => s.CustomerAddress)
                 .Include(s => s.CustomerContacts)
                 .Include(s => s.CustomerAddress.Select(a => a.Address))

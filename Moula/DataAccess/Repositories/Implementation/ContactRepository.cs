@@ -9,18 +9,18 @@ namespace DataAccess.Repositories
 {
     public class ContactRepository:RepositoryBase<Contacts>,IContactRepository
     {
-        public CustomerDbContext DbContext { get; }
+        public CustomerDbContext dbContext { get; }
 
         public ContactRepository(CustomerDbContext dbContext) : base(dbContext)
         {
-            DbContext = dbContext;
+            this.dbContext = dbContext;
         }
         
        
         
         public IEnumerable<Contacts> GetAllContactsWithDetail()
         {
-            var result=  DbContext.Contacts
+            var result=  dbContext.Contacts
                 .Include(d => d.ContactType)
                 .Include(s => s.CustomerContacts)
                 .Include(s => s.CustomerContacts.Select(w=>w.Customer))
@@ -29,7 +29,7 @@ namespace DataAccess.Repositories
         }
         public IEnumerable<Contacts> GetContactsWithDetailByFilter(Expression<Func<Contacts,bool>> expression)
         {
-            var result=  DbContext.Contacts
+            var result=  dbContext.Contacts
                 .Include(d => d.ContactType)
                 .Include(s => s.CustomerContacts)
                 .Include(s => s.CustomerContacts.Select(w=>w.Customer))

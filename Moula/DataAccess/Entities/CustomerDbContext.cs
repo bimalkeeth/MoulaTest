@@ -1,4 +1,5 @@
 ﻿using System;
+using DataMigration.Migrations;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
@@ -34,6 +35,7 @@ namespace DataAccess.Entities
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            
             modelBuilder.HasAnnotation("ProductVersion", "2.2.1-servicing-10028");
 
             modelBuilder.Entity<Address>(entity =>
@@ -222,6 +224,7 @@ namespace DataAccess.Entities
                     .IsRequired()
                     .HasMaxLength(100);
             });
+            Migrations.ModelBuilderExt.Seed(modelBuilder);
         }
     }
 }

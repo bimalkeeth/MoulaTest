@@ -10,19 +10,19 @@ namespace DataAccess.Repositories
 {
     public class StateRepository:RepositoryBase<States>,IStateRepository
     {
-        public CustomerDbContext DbContext { get; }
+        public CustomerDbContext dbContext { get; }
 
         public StateRepository(CustomerDbContext dbContext) : base(dbContext)
         {
-            DbContext = dbContext;
+            this.dbContext = dbContext;
         }
         public States GetState(int id)
         {
-           return DbContext.States.FirstOrDefault(d => d.Id == id);
+           return dbContext.States.FirstOrDefault(d => d.Id == id);
         }
         public IEnumerable<States> GetAllStates()
         {
-           return DbContext.States.AsNoTracking().ToList();
+           return dbContext.States.AsNoTracking().ToList();
         }
     }
 }

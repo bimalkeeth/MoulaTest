@@ -9,16 +9,16 @@ namespace DataAccess.Repositories
 {
     public class AddressRepository:RepositoryBase<Address>,IAddressRepository
     {
-        public CustomerDbContext DbContext { get; }
+        public CustomerDbContext dbContext { get; }
 
         public AddressRepository(CustomerDbContext dbContext) : base(dbContext)
         {
-            DbContext = dbContext;
+            this.dbContext = dbContext;
         }
 
         public IEnumerable<Address> GetAllAddressWithDetail()
         {
-            var result=  DbContext.Address
+            var result=  dbContext.Address
                 .Include(d => d.AddressType)
                 .Include(s => s.CustomerAddress)
                 .Include(s => s.CustomerAddress.Select(w=>w.Customer))
@@ -27,7 +27,7 @@ namespace DataAccess.Repositories
         }
         public IEnumerable<Address> GetAddressWithDetailByAddressParameter(Expression<Func<Address,bool>> expression)
         {
-            var result=  DbContext.Address
+            var result=  dbContext.Address
                 .Include(d => d.AddressType)
                 .Include(s => s.CustomerAddress)
                 .Include(s => s.CustomerAddress.Select(w=>w.Customer))

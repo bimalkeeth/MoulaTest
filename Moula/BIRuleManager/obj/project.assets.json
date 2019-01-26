@@ -1989,6 +1989,7 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v2.1",
         "dependencies": {
+          "DataMigration": "1.0.0",
           "Microsoft.EntityFrameworkCore": "2.2.1",
           "Microsoft.EntityFrameworkCore.Design": "2.2.1",
           "Microsoft.EntityFrameworkCore.InMemory": "2.2.1",
@@ -2002,6 +2003,16 @@
         },
         "runtime": {
           "bin/placeholder/DataAccess.dll": {}
+        }
+      },
+      "DataMigration/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v2.1",
+        "compile": {
+          "bin/placeholder/DataMigration.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/DataMigration.dll": {}
         }
       }
     }
@@ -6900,6 +6911,11 @@
       "type": "project",
       "path": "../DataAccess/DataAccess.csproj",
       "msbuildProject": "../DataAccess/DataAccess.csproj"
+    },
+    "DataMigration/1.0.0": {
+      "type": "project",
+      "path": "../DataMigration/DataMigration.csproj",
+      "msbuildProject": "../DataMigration/DataMigration.csproj"
     }
   },
   "projectFileDependencyGroups": {
