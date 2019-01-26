@@ -13,6 +13,7 @@ namespace DataAccess.Entities
         public CustomerDbContext(DbContextOptions<CustomerDbContext> options)
             : base(options)
         {
+            
         }
 
         public virtual DbSet<Address> Address { get; set; }
@@ -28,8 +29,9 @@ namespace DataAccess.Entities
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer("Server=localhost;Database=CustomerDb;User=sa;Password=Scala@1234;");
+                optionsBuilder.UseSqlServer("Server=localhost;Database=CustomerDbx;User=sa;Password=Scala@1234;");
             }
+            base.OnConfiguring(optionsBuilder);
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

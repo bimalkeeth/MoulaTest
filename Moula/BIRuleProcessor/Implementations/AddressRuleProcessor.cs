@@ -14,14 +14,16 @@ namespace BIRuleProcessor.Implementations
     public class AddressRuleProcessor:IAddressRuleProcessor
     {
         private readonly IUnitOfWork _unitOfWork;
+        private readonly IMapper _mapper;
 
-        public AddressRuleProcessor(IUnitOfWork unitOfWork)
+        public AddressRuleProcessor(IUnitOfWork unitOfWork,IMapper mapper)
         {
             _unitOfWork = unitOfWork ?? throw new ArgumentException(string.Format(BusinessRuleResource.Error_InstanceObject,nameof(unitOfWork)));
+            _mapper = mapper;
         }
         public IEnumerable<int> CreateAddress(IEnumerable<AddressBo> addressList)
         {
-            var datalist = Mapper.Map<IEnumerable<AddressBo>, IEnumerable<Address>>(addressList);
+            var datalist = _mapper.Map<IEnumerable<AddressBo>, IEnumerable<Address>>(addressList);
             var enumerable = datalist as Address[] ?? datalist.ToArray();
             _unitOfWork.AddressRepo.CreateRange(enumerable);
             _unitOfWork.SaveChanges();
@@ -55,13 +57,13 @@ namespace BIRuleProcessor.Implementations
         public AddressBo GetAddressWithDetailById(int id)
         {
             var data = _unitOfWork.AddressRepo.GetAddressWithDetailByAddressParameter(w => w.Id == id).FirstOrDefault();
-            return Mapper.Map<Address, AddressBo>(data);
+            return _mapper.Map<Address, AddressBo>(data);
         }
 
         public IEnumerable<AddressBo> GetAllAddressWithDetail()
         {
             var data = _unitOfWork.AddressRepo.GetAllAddressWithDetail();
-            return Mapper.Map<IEnumerable<Address>, IEnumerable<AddressBo>>(data);
+            return _mapper.Map<IEnumerable<Address>, IEnumerable<AddressBo>>(data);
         }
     }
 }

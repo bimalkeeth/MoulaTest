@@ -17,10 +17,12 @@ namespace BIRuleProcessor.Implementations
     public class CustomerRulesProcessor:ICustomerRulesProcessor
     {
         private readonly IUnitOfWork _unitOfWork;
+        private readonly IMapper _mapper;
 
-        public CustomerRulesProcessor(IUnitOfWork unitOfWork)
+        public CustomerRulesProcessor(IUnitOfWork unitOfWork,IMapper mapper)
         {
             _unitOfWork = unitOfWork ?? throw new ArgumentException(string.Format(BusinessRuleResource.Error_InstanceObject,nameof(unitOfWork)));
+            _mapper = mapper;
         }
         /// <summary>
         /// Create Customer 
@@ -77,12 +79,10 @@ namespace BIRuleProcessor.Implementations
             
             return null;
         }
-        
-        
         public IEnumerable<CustomerDetailBo> GetTopCustomers(int topCount)
         {
            var data=_unitOfWork.CustomerRepo.GetCustomerWithDetailByWithOrder(topCount);
-          return Mapper.Map<IEnumerable<Customers>, IEnumerable<CustomerDetailBo>>(data);
+          return _mapper.Map<IEnumerable<Customers>, IEnumerable<CustomerDetailBo>>(data);
         }
     }
 }

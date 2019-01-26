@@ -5,15 +5,14 @@ using DataAccess.Entities;
 
 namespace BIRuleProcessor.Mapppers
 {
-    public static class AutoMapperConfiguration
+    public class AutoMapperConfiguration:Profile
     {
         /// <summary>--------------------------------------------------
         /// Auto mapper mapping database entities with business object
         /// </summary>-------------------------------------------------
         /// <returns></returns>
-        internal class BusinessRuleMappers:AutoMapper.Profile
-        {
-            public BusinessRuleMappers()
+        
+            public AutoMapperConfiguration()
             {
                 CreateMap<Address, AddressBo>()
                     .ForMember(des => des.Id, src => src.MapFrom(d => d.Id))
@@ -91,6 +90,6 @@ namespace BIRuleProcessor.Mapppers
                                 ?.Contact;
                         });
             }
-        }
+       
     }
 }

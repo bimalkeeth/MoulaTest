@@ -14,9 +14,12 @@ namespace BIRuleProcessor.Implementations
     public class ContactsRuleProcessor:IContactsRuleProcessor
     {
         private readonly IUnitOfWork _unitOfWork;
-        public ContactsRuleProcessor(IUnitOfWork unitOfWork)
+        private readonly IMapper _mapper;
+
+        public ContactsRuleProcessor(IUnitOfWork unitOfWork,IMapper mapper)
         {
             _unitOfWork = unitOfWork ?? throw new ArgumentException(string.Format(BusinessRuleResource.Error_InstanceObject,nameof(unitOfWork)));
+            _mapper = mapper;
         }
         
         public IEnumerable<int> CreateContacts(IEnumerable<ContactsBo> contactList)
@@ -53,20 +56,16 @@ namespace BIRuleProcessor.Implementations
             _unitOfWork.SaveChanges();
             return true;
         }
-        
-        
-        
-        
         public ContactsBo GetContactWithDetailById(int id)
         {
             var data = _unitOfWork.ContactsRepo.GetContactsWithDetailByFilter(w => w.Id == id).FirstOrDefault();
-            return Mapper.Map<Contacts, ContactsBo>(data);
+            return _mapper.Map<Contacts, ContactsBo>(data);
         }
 
         public IEnumerable<ContactsBo> GetAllAddressWithDetail()
         {
             var data = _unitOfWork.ContactsRepo.GetAllContactsWithDetail();
-            return Mapper.Map<IEnumerable<Contacts>, IEnumerable<ContactsBo>>(data);
+            return _mapper.Map<IEnumerable<Contacts>, IEnumerable<ContactsBo>>(data);
         }
     }
 }

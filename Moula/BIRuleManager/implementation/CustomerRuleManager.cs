@@ -1,6 +1,7 @@
 using System;
 using System.Data;
 using System.Linq;
+using AutoMapper;
 using BIRuleManager.interfaces;
 using BIRuleProcessor.Interfaces;
 using CommonContracts;
@@ -14,14 +15,16 @@ namespace BIRuleManager.implementation
         private readonly IAddressRuleProcessor _addressRuleProcessor;
         private readonly IContactsRuleProcessor _contactsRuleProcessor;
         private readonly ICustomerRulesProcessor _customerRulesProcessor;
+        private readonly IMapper _mapper;
 
         public CustomerRuleManager(IAddressRuleProcessor addressRuleProcessor,
             IContactsRuleProcessor contactsRuleProcessor,
-            ICustomerRulesProcessor customerRulesProcessor)
+            ICustomerRulesProcessor customerRulesProcessor,IMapper mapper)
         {
             _addressRuleProcessor = addressRuleProcessor ?? throw new ArgumentException(string.Format(BusinessRuleResource.Error_InstanceObject,nameof(addressRuleProcessor)));
             _contactsRuleProcessor = contactsRuleProcessor ?? throw new ArgumentException(string.Format(BusinessRuleResource.Error_InstanceObject,nameof(contactsRuleProcessor)));
             _customerRulesProcessor = customerRulesProcessor ?? throw new ArgumentException(string.Format(BusinessRuleResource.Error_InstanceObject,nameof(customerRulesProcessor)));
+            _mapper = mapper;
         }
         public bool CreateCustomer(CustomerBo customer)
         {

@@ -13,8 +13,9 @@ namespace DataAccess.Repositories.Implementation
         public CustomerDbContext Context { get; }
         public UnitOfWork(CustomerDbContext context,IRepositoryFactory repositoryFactory)
         {
-            _repositoryFactory = repositoryFactory;
+           _repositoryFactory = repositoryFactory;
             Context = context;
+            
         }
         public ICustomerRepository CustomerRepo => _repositoryFactory.GetRepo<ICustomerRepository>(Context);
         public IAddressRepository  AddressRepo => _repositoryFactory.GetRepo<IAddressRepository>(Context);

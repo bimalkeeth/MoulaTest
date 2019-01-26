@@ -2,7 +2,10 @@ using BIRuleManager.implementation;
 using BIRuleManager.interfaces;
 using BIRuleProcessor.Implementations;
 using BIRuleProcessor.Interfaces;
+using DataAccess;
 using DataAccess.Entities;
+using DataAccess.Repositories.Implementation;
+using DataAccess.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -18,6 +21,9 @@ namespace MoulaCustomers.DIContainer
             service.AddTransient<IAddressRuleProcessor, AddressRuleProcessor>();
             service.AddTransient<IContactsRuleProcessor, ContactsRuleProcessor>();
             service.AddTransient<ICustomerRulesProcessor, CustomerRulesProcessor>();
+            service.AddSingleton<IUnitOfWork, UnitOfWork>();
+            service.AddSingleton<IRepositoryFactory, RepositoryFactory>();
+            
         }
     }
 }
