@@ -1,6 +1,7 @@
 using System;
 using System.Threading.Tasks;
 using DataAccess.Repositories;
+using DataAccess.Repositories.Interfaces;
 
 namespace DataAccess
 {
@@ -17,6 +18,8 @@ namespace DataAccess
        IContactRepository  ContactsRepo { get; }
        IAddressTypeRepository  AddressTypeRepo { get; }
        IContactTypeRepository  ContactTypeRepo { get; }
+       ICustomerAddressRepository  CustomerAddressRepo { get; }
+       ICustomerContactsRepository  CustomerContactsRepo { get; }
        
     }
 }

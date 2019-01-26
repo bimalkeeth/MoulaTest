@@ -28,6 +28,14 @@ namespace DataAccess.Repositories.Implementation
             {
                 result=new ContactTypeRepository(context) ;
             }
+            if (typeof(T) == typeof(ICustomerAddressRepository))
+            {
+                result=new CustomerAddressRepository(context) ;
+            }
+            if (typeof(T) == typeof(ICustomerContactsRepository))
+            {
+                result=new CustomerContactsRepository(context) ;
+            }
             return  (T)result;
         }
     }

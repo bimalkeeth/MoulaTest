@@ -74,11 +74,76 @@ namespace BIRuleProcessor.Implementations
 
         public IEnumerable<int> CreateCustomerAddress(IEnumerable<CustomerAddressBo> customerAddress)
         {
-            
-            
-            
-            return null;
+           var customerAddressBos = customerAddress as CustomerAddressBo[] ?? customerAddress.ToArray();
+           var customerAdd=customerAddressBos.FirstOrDefault(s => s.AddressId == 0 || s.CustomerId == 0);
+           if (customerAdd != null)
+           {
+                throw new DataException(string.Format(BusinessRuleResource.Error_InstanceAddressIdCustomerId,nameof(CustomerAddressBo))); 
+           }
+           var address= customerAddressBos.Select(d =>
+                new CustomerAddress
+                {
+                    AddressId = d.AddressId,
+                    CustomerId = d.CustomerId,
+                    IsPrimary = d.IsPrimary
+
+                }).ToArray();
+                _unitOfWork.CustomerAddressRepo.CreateRange(address);
+                _unitOfWork.SaveChanges();
+            return address.Select(d=>d.Id);
         }
+        
+        public bool UpdateCustomerAddress(IEnumerable<CustomerAddressBo> customerAddress)
+        {
+            var customerAddressBos = customerAddress as CustomerAddressBo[] ?? customerAddress.ToArray();
+            var customerAdd=customerAddressBos.FirstOrDefault(s => s.AddressId == 0 || s.CustomerId == 0);
+            if (customerAdd != null)
+            {
+                throw new DataException(string.Format(BusinessRuleResource.Error_InstanceAddressIdCustomerId,nameof(CustomerAddressBo))); 
+            }
+            var address = customerAddressBos.Select(d => d.Id).ToArray();
+            var customerAddressDb=_unitOfWork.CustomerAddressRepo.GetCustomerAddress(address).ToArray();
+            
+            foreach (var cust in customerAddressBos)
+            {
+                var item = customerAddressDb.FirstOrDefault(d => d.Id == cust.Id);
+                if (item == null) continue;
+                item.IsPrimary = cust.IsPrimary;
+                item.AddressId = cust.AddressId;
+                item.CustomerId = cust.CustomerId;
+            }
+            _unitOfWork.CustomerAddressRepo.UpdateRange(customerAddressDb);
+            _unitOfWork.SaveChanges();
+            return true;
+        }
+        
+        public bool UpdateCustomerContacts(IEnumerable<CustomerContactsBo> customerContacts)
+        {
+            var customerContactsBos = customerContacts as CustomerContactsBo[] ?? customerContacts.ToArray();
+            var customerCon=customerContactsBos.FirstOrDefault(s => s.ContactId == 0 || s.CustomerId == 0);
+            if (customerCon != null)
+            {
+                throw new DataException(string.Format(BusinessRuleResource.Error_InstanceContactsIdCustomerId,nameof(CustomerContactsBo))); 
+            }
+            var address = customerContactsBos.Select(d => d.Id).ToArray();
+            var customerContactDb=_unitOfWork.CustomerContactsRepo.GetCustomerContacts(address).ToArray();
+            
+            foreach (var cust in customerContactsBos)
+            {
+                var item = customerContactDb.FirstOrDefault(d => d.Id == cust.Id);
+                if (item == null) continue;
+                item.IsPrimaryint = cust.IsPrimary;
+                item.ContactId = cust.ContactId;
+                item.CustomerId = cust.CustomerId;
+            }
+            _unitOfWork.CustomerContactsRepo.UpdateRange(customerContactDb);
+            _unitOfWork.SaveChanges();
+            return true;
+        }
+        
+        
+        
+        
         public IEnumerable<CustomerDetailBo> GetTopCustomers(int topCount)
         {
            var data=_unitOfWork.CustomerRepo.GetCustomerWithDetailByWithOrder(topCount);

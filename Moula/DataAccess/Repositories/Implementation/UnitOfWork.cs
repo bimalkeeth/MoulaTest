@@ -22,6 +22,8 @@ namespace DataAccess.Repositories.Implementation
         public IContactRepository  ContactsRepo => _repositoryFactory.GetRepo<IContactRepository>(Context);
         public IAddressTypeRepository  AddressTypeRepo => _repositoryFactory.GetRepo<IAddressTypeRepository>(Context);
         public IContactTypeRepository  ContactTypeRepo => _repositoryFactory.GetRepo<IContactTypeRepository>(Context);
+        public ICustomerAddressRepository  CustomerAddressRepo => _repositoryFactory.GetRepo<ICustomerAddressRepository>(Context);
+        public ICustomerContactsRepository  CustomerContactsRepo => _repositoryFactory.GetRepo<ICustomerContactsRepository>(Context);
         
         public int SaveChanges()
         {
