@@ -10,8 +10,14 @@ namespace BIRuleProcessor.Interfaces
         /// </summary>
         /// <param name="contactList"></param>
         /// <returns></returns>
-        int CreateContacts(IEnumerable<ContactsBo> contactList);
+        IEnumerable<int> CreateContacts(IEnumerable<ContactsBo> contactList);
 
+        /// <summary>
+        /// Update Contacts
+        /// </summary>
+        /// <param name="contactList"></param>
+        /// <returns></returns>
+        bool UpdateContacts(IEnumerable<ContactsBo> contactList);
         /// <summary>
         /// Get contacts by id
         /// </summary>
@@ -24,5 +30,7 @@ namespace BIRuleProcessor.Interfaces
         /// </summary>
         /// <returns></returns>
         IEnumerable<ContactsBo> GetAllAddressWithDetail();
+        
+        
     }
 }

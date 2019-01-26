@@ -21,4 +21,13 @@
     <data name="Error_CustomerObject">
         <value>Customer data object is null or empty</value>
     </data>
+    <data name="Error_InstanceObject">
+        <value>Instance {0} object is null or empty</value>
+    </data>
+    <data name="Error_InstanceId">
+        <value>Id of  {0} object is null or empty</value>
+    </data>
+    <data name="Error_InstanceIdFor">
+        <value>Id of  {0} object is null or empty for {1}</value>
+    </data>
 </root>

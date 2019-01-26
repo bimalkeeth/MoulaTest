@@ -11,7 +11,7 @@ namespace BIRuleProcessor.Mapppers
         /// Auto mapper mapping database entities with business object
         /// </summary>-------------------------------------------------
         /// <returns></returns>
-        internal; class BusinessRuleMappers:AutoMapper.Profile
+        internal class BusinessRuleMappers:AutoMapper.Profile
         {
             public BusinessRuleMappers()
             {
@@ -92,5 +92,5 @@ namespace BIRuleProcessor.Mapppers
                         });
             }
         }
-    }e
+    }
 }

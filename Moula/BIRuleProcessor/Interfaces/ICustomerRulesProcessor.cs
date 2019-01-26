@@ -5,7 +5,7 @@ namespace BIRuleProcessor.Interfaces
 {
     public interface ICustomerRulesProcessor
     {
-        int CreateAddress(CustomerBo customer);
+        int CreateCustomer(CustomerBo customer);
         
         /// <summary>
         /// Get All Top Customers
@@ -13,5 +13,12 @@ namespace BIRuleProcessor.Interfaces
         /// <param name="topCount"></param>
         /// <returns></returns>
         IEnumerable<CustomerDetailBo> GetTopCustomers(int topCount);
+
+        /// <summary>
+        /// Update Customer Mail Fields
+        /// </summary>
+        /// <param name="customer"></param>
+        /// <returns></returns>
+        bool UpdateCustomer(CustomerBo customer);
     }
 }

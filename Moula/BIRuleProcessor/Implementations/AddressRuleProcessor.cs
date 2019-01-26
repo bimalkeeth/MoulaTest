@@ -1,8 +1,11 @@
+using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using AutoMapper;
 using BIRuleProcessor.Interfaces;
 using CommonContracts;
+using CommonContracts.Resources;
 using DataAccess;
 using DataAccess.Entities;
 
@@ -14,15 +17,41 @@ namespace BIRuleProcessor.Implementations
 
         public AddressRuleProcessor(IUnitOfWork unitOfWork)
         {
-            _unitOfWork = unitOfWork;
+            _unitOfWork = unitOfWork ?? throw new ArgumentException(string.Format(BusinessRuleResource.Error_InstanceObject,nameof(unitOfWork)));
         }
-        public int CreateAddress(IEnumerable<AddressBo> addressList)
+        public IEnumerable<int> CreateAddress(IEnumerable<AddressBo> addressList)
         {
             var datalist = Mapper.Map<IEnumerable<AddressBo>, IEnumerable<Address>>(addressList);
-            _unitOfWork.AddressRepo.CreateRange(datalist);
-            return _unitOfWork.SaveChanges();
+            var enumerable = datalist as Address[] ?? datalist.ToArray();
+            _unitOfWork.AddressRepo.CreateRange(enumerable);
+            _unitOfWork.SaveChanges();
+            return enumerable.ToList().Select(s => s.Id);
         }
+        public bool UpdateAddress(IEnumerable<AddressBo> addressList)
+        {
+            if (addressList == null)
+            {
+                throw new DataException(string.Format(BusinessRuleResource.Error_InstanceObject,nameof(addressList)));
+            }
 
+            var addressBos = addressList as AddressBo[] ?? addressList.ToArray();
+            if (addressBos.FirstOrDefault(s=>s.Id == 0)!=null)
+            {
+                throw new DataException(string.Format(BusinessRuleResource.Error_InstanceId,"Id"));
+            }
+            var addressUpdateList= addressBos.Select(e => new Address
+            {
+                  Street = e.Street,
+                  Suburb = e.Suburb,
+                  Street2 = e.Street2,
+                  StateId = e.StateId,
+                  AddressTypeId = e.AddressTypeId,
+                  Country = e.Country,
+            });
+            _unitOfWork.AddressRepo.UpdateRange(addressUpdateList);
+            _unitOfWork.SaveChanges();
+            return true;
+        }
         public AddressBo GetAddressWithDetailById(int id)
         {
             var data = _unitOfWork.AddressRepo.GetAddressWithDetailByAddressParameter(w => w.Id == id).FirstOrDefault();

@@ -10,7 +10,7 @@ namespace BIRuleProcessor.Interfaces
         /// </summary>
         /// <param name="addressList"></param>
         /// <returns></returns>
-        int CreateAddress(IEnumerable<AddressBo> addressList);
+        IEnumerable<int> CreateAddress(IEnumerable<AddressBo> addressList);
 
         /// <summary>
         /// Get Address with Related Detail
@@ -24,5 +24,12 @@ namespace BIRuleProcessor.Interfaces
         /// </summary>
         /// <returns></returns>
         IEnumerable<AddressBo> GetAllAddressWithDetail();
+
+        /// <summary>
+        /// Update Address
+        /// </summary>
+        /// <param name="addressList"></param>
+        /// <returns></returns>
+        bool UpdateAddress(IEnumerable<AddressBo> addressList);
     }
 }

@@ -3,6 +3,8 @@ using System.Collections.Generic;
 
 namespace CommonContracts
 {
+    
+    
     public class CustomerBo
     {
         public int Id { get; set; }
