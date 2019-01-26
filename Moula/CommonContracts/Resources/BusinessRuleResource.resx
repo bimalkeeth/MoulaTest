@@ -30,4 +30,7 @@
     <data name="Error_InstanceIdFor">
         <value>Id of  {0} object is null or empty for {1}</value>
     </data>
+    <data name="Program_Main_Starting_Customer_GRPC_Server" xml:space="preserve">
+        <value>Starting Customer GRPC Server</value>
+    </data>
 </root>

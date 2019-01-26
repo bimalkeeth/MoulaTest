@@ -23,6 +23,9 @@
           },
           "/home/bill/RiderProjects/MoulaTest/Moula/DataAccess/DataAccess.csproj": {
             "projectPath": "/home/bill/RiderProjects/MoulaTest/Moula/DataAccess/DataAccess.csproj"
+          },
+          "/home/bill/RiderProjects/MoulaTest/Moula/ProtoMediator/ProtoMediator.csproj": {
+            "projectPath": "/home/bill/RiderProjects/MoulaTest/Moula/ProtoMediator/ProtoMediator.csproj"
           }
         }
       }
@@ -44,6 +47,10 @@
           "target": "Package",
           "version": "[8.1.2, )"
         },
+        "Grpc.Core": {
+          "target": "Package",
+          "version": "[1.18.0, )"
+        },
         "Microsoft.AspNetCore.Hosting": {
           "target": "Package",
           "version": "[2.2.0, )"
@@ -52,27 +59,11 @@
           "target": "Package",
           "version": "[2.2.0, )"
         },
-        "Microsoft.Extensions.Configuration.FileExtensions": {
-          "target": "Package",
-          "version": "[2.2.0, )"
-        },
         "Microsoft.Extensions.Configuration.Json": {
           "target": "Package",
           "version": "[2.2.0, )"
         },
         "Microsoft.Extensions.DependencyInjection": {
-          "target": "Package",
-          "version": "[2.2.0, )"
-        },
-        "Microsoft.Extensions.Logging": {
-          "target": "Package",
-          "version": "[2.2.0, )"
-        },
-        "Microsoft.Extensions.Logging.Console": {
-          "target": "Package",
-          "version": "[2.2.0, )"
-        },
-        "Microsoft.Extensions.Logging.Debug": {
           "target": "Package",
           "version": "[2.2.0, )"
         },
@@ -93,6 +84,10 @@
         "System.Interactive.Async": {
           "target": "Package",
           "version": "[3.2.0, )"
+        },
+        "log4net": {
+          "target": "Package",
+          "version": "[2.0.8, )"
         }
       },
       "imports": [

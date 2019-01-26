@@ -14,5 +14,9 @@
   </PropertyGroup>
   <ImportGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
     <Import Project="$(NuGetPackageRoot)microsoft.netcore.app/2.1.0/build/netcoreapp2.1/Microsoft.NETCore.App.props" Condition="Exists('$(NuGetPackageRoot)microsoft.netcore.app/2.1.0/build/netcoreapp2.1/Microsoft.NETCore.App.props')" />
+    <Import Project="$(NuGetPackageRoot)grpc.tools/1.18.0/build/Grpc.Tools.props" Condition="Exists('$(NuGetPackageRoot)grpc.tools/1.18.0/build/Grpc.Tools.props')" />
   </ImportGroup>
+  <PropertyGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
+    <PkgGrpc_Tools Condition=" '$(PkgGrpc_Tools)' == '' ">/home/bill/.nuget/packages/grpc.tools/1.18.0</PkgGrpc_Tools>
+  </PropertyGroup>
 </Project>

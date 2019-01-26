@@ -14,11 +14,7 @@
     ],
     "frameworks": {
       "netcoreapp2.1": {
-        "projectReferences": {
-          "/home/bill/RiderProjects/MoulaTest/Moula/DataMigration/DataMigration.csproj": {
-            "projectPath": "/home/bill/RiderProjects/MoulaTest/Moula/DataMigration/DataMigration.csproj"
-          }
-        }
+        "projectReferences": {}
       }
     },
     "warningProperties": {

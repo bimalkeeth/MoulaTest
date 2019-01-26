@@ -1,5 +1,4 @@
 ﻿using System;
-using DataMigration.Migrations;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 

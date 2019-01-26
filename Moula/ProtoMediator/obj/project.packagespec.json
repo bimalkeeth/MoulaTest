@@ -26,11 +26,27 @@
   "frameworks": {
     "netcoreapp2.1": {
       "dependencies": {
+        "Google.Protobuf": {
+          "target": "Package",
+          "version": "[3.6.1, )"
+        },
+        "Grpc.Core": {
+          "target": "Package",
+          "version": "[1.18.0, )"
+        },
+        "Grpc.Tools": {
+          "target": "Package",
+          "version": "[1.18.0, )"
+        },
         "Microsoft.NETCore.App": {
           "suppressParent": "All",
           "target": "Package",
           "version": "[2.1.0, )",
           "autoReferenced": true
+        },
+        "System.Interactive.Async": {
+          "target": "Package",
+          "version": "[3.2.0, )"
         }
       },
       "imports": [
