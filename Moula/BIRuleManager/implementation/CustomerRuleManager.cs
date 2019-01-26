@@ -103,8 +103,5 @@ namespace BIRuleManager.implementation
             }
             return true;
         }
-        
-        
-        
     }
 }
