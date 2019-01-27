@@ -1,4 +1,3 @@
-using System.Reflection;
 using AutoMapper;
 using BIRuleProcessor.Mapppers;
 using Microsoft.AspNetCore.Builder;
@@ -24,20 +23,18 @@ namespace MoulaCustomers
         
         public void ConfigureServices(IServiceCollection services)
         {
-            var mapping = new MapperConfiguration(mc =>
-            {
-                mc.AddProfile(new AutoMapperConfiguration() );
-            });
+            var mapping = new MapperConfiguration(mc =>{mc.AddProfile(new AutoMapperConfiguration());});
             ContainerInjector.Config(services,Configuration);
             services.AddSingleton<CustomerService.CustomerServiceBase, CustomerServiceProcess>();
             services.AddSingleton<CustomerServiceProcess, CustomerServiceProcess>();
             services.Configure<Services.ServiceOptions>(Configuration.GetSection("Services"));
             services.AddSingleton(mapping.CreateMapper());
         }
-
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, IApplicationLifetime lifetime)
         {
-            
+           
         }
+        
+       
     }
 }

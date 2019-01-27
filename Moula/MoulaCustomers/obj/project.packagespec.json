@@ -39,6 +39,10 @@
   "frameworks": {
     "netcoreapp2.1": {
       "dependencies": {
+        "Consul": {
+          "target": "Package",
+          "version": "[0.7.2.6, )"
+        },
         "FluentValidation.AspNetCore": {
           "target": "Package",
           "version": "[8.1.2, )"
