@@ -14,24 +14,24 @@ namespace MoulaCustomers
 {
     public class Startup
     {
-        public IConfiguration Configuration { get; }
+        
 
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
         }
-
-        public void ConfigurationService(IServiceCollection services)
+        public IConfiguration Configuration { get; }
+        
+        public void ConfigureServices(IServiceCollection services)
         {
             var mapping = new MapperConfiguration(mc =>
             {
                 mc.AddProfile(new AutoMapperConfiguration() );
             });
+            ContainerInjector.Config(services,Configuration);
             services.AddSingleton<CustomerService.CustomerServiceBase, CustomerServiceProcess>();
             services.AddSingleton<CustomerServiceProcess, CustomerServiceProcess>();
-            ContainerInjector.Config(services,Configuration);
-            services.Configure<Services.ConfigSettings>(Configuration.GetSection("ConfigSettings"));
-            
+            services.Configure<Services.ServiceOptions>(Configuration.GetSection("Services"));
             services.AddSingleton(mapping.CreateMapper());
         }
 

@@ -28,13 +28,13 @@ namespace MoulaCustomers
         static void Main(string[] args)
         {
             Console.WriteLine(BusinessRuleResource.Program_Main_Starting_Customer_GRPC_Server);
-            BuildWebHost(args).Run();
+            BuildWebHost(args).CreateScope().Run();
           
         }
 
         private static IWebHost BuildWebHost(string[] args) =>
             new WebHostBuilder().UseContentRoot(Directory.GetCurrentDirectory())
-                .ConfigureAppConfiguration((context, builder) =>{builder.AddJsonFile("appsettings.json", false, true);})
+                .ConfigureAppConfiguration((context, builder) => { builder.AddJsonFile("appsettings.json", false, true); })
                 .UseStartup<Startup>()
                 .UseGrpc<CustomerServiceProcess>().Build();
     }

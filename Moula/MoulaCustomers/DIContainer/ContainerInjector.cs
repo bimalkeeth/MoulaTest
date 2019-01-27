@@ -9,6 +9,7 @@ using DataAccess.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using MoulaCustomers.Services;
 
 namespace MoulaCustomers.DIContainer
 {
@@ -21,7 +22,9 @@ namespace MoulaCustomers.DIContainer
         /// <param name="configuration"></param>
         public static void Config(IServiceCollection service,IConfiguration configuration)
         {
-            service.AddDbContext<CustomerDbContext>(option=>option.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
+            var config = new ServiceOptions();
+            configuration.GetSection("Services").Bind(config);
+            service.AddDbContext<CustomerDbContext>(option=>option.UseSqlServer(config.DefaultConnection));
             service.AddTransient<ICustomerRuleManager, CustomerRuleManager>();
             service.AddTransient<IAddressRuleProcessor, AddressRuleProcessor>();
             service.AddTransient<IContactsRuleProcessor, ContactsRuleProcessor>();

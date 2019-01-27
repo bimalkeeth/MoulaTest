@@ -21,10 +21,11 @@ namespace MoulaCustomers.Services
             {
                 services.AddSingleton<IServer, CustomerServer>(provider =>
                 {
-                    var serverOption = provider.GetService<IOptions<ConfigSettings>>().Value;
+                    var serverOption = provider.GetService<IOptions<ServiceOptions>>().Value;
                     var contract = provider.GetService<T>();
                     var serviceDefinition = CustomerService.BindService(contract);
-                    return new CustomerServer(serverOption.Service.Host, serverOption.Service.Port, serviceDefinition);
+                    return new CustomerServer(serverOption.Host, serverOption.Port, serviceDefinition);
+
                 });
             });
         }
@@ -46,10 +47,10 @@ namespace MoulaCustomers.Services
         {
             var scope = webHost.Services.CreateScope();
             var services = scope.ServiceProvider.GetRequiredService<CustomerService.CustomerServiceBase>();
-            var serviceOptions=scope.ServiceProvider.GetRequiredService<IOptions<ConfigSettings>>().Value;
+            var serviceOptions=scope.ServiceProvider.GetRequiredService<IOptions<ServiceOptions>>().Value;
 
             var serviceDefinition = CustomerService.BindService(services);
-            using (var server = new CustomerServer(serviceOptions.Service.Host, serviceOptions.Service.Port, serviceDefinition))
+            using (var server = new CustomerServer(serviceOptions.Host, serviceOptions.Port, serviceDefinition))
             {
                 server.Start();
             }
