@@ -17,7 +17,9 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using MoulaCustomers.CustomerServiceImpl;
 using MoulaCustomers.DIContainer;
+using MoulaCustomers.Services;
 
 namespace MoulaCustomers
 {
@@ -27,14 +29,13 @@ namespace MoulaCustomers
         {
             Console.WriteLine(BusinessRuleResource.Program_Main_Starting_Customer_GRPC_Server);
             BuildWebHost(args).Run();
+          
         }
 
         private static IWebHost BuildWebHost(string[] args) =>
             new WebHostBuilder().UseContentRoot(Directory.GetCurrentDirectory())
-                .ConfigureAppConfiguration((context, builder) =>
-                {
-                    builder.AddJsonFile("appsettings.json", false, true);
-                })
-                .UseStartup<Startup>().Build();
+                .ConfigureAppConfiguration((context, builder) =>{builder.AddJsonFile("appsettings.json", false, true);})
+                .UseStartup<Startup>()
+                .UseGrpc<CustomerServiceProcess>().Build();
     }
 }

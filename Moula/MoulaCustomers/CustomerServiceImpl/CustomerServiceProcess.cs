@@ -243,5 +243,73 @@ namespace MoulaCustomers.CustomerServiceImpl
                 throw new RpcException(new Status(StatusCode.Aborted,e.Message));
             }
         }
+
+        public override async Task<UpdateCustomerResponse> UpdateCustomer(CustomerRequest request, ServerCallContext context)
+        {
+           try
+            {
+                DateTime date;
+                var dateOfBirth= DateTime.TryParse(request.DateOfBirth, out date);
+                if (!dateOfBirth)
+                {
+                    throw new ValidationException(BusinessRuleResource.Error_InDateOfBirth);
+                }
+
+                var customerAddress = new List<CustomerAddressBo>();
+                foreach (var customerAdd in request.CustomerAddress)
+                {
+                    if(customerAdd.Address==null) continue;
+                    customerAddress.Add(new CustomerAddressBo
+                    {
+                        IsPrimary = customerAdd.IsPrimary,
+                        AddressId = customerAdd.AddressId,
+                        CustomerId = customerAdd.CustomerId,
+                        Address =new AddressBo
+                        {
+                            Street = customerAdd.Address.Street,
+                            StateId = customerAdd.Address.StateId,
+                            Suburb = customerAdd.Address.Suburb,
+                            Country = customerAdd.Address.Country,
+                            Street2 = customerAdd.Address.Street2,
+                            AddressTypeId = customerAdd.Address.AddressTypeId
+                        }
+                    });
+                }
+
+                var customerContacts = new List<CustomerContactsBo>();
+                foreach (var customerCon in request.CustomerContacts)
+                {
+                    if(customerCon.Contact==null) continue;
+                    customerContacts.Add(new CustomerContactsBo
+                    {
+                        IsPrimary = customerCon.IsPrimary,
+                        ContactId =customerCon.ContactId,
+                        CustomerId = customerCon.CustomerId,
+                        Contact = new ContactsBo
+                        {
+                            Contact = customerCon.Contact.Contact,
+                            ContactTypeId = customerCon.Contact.ContactTypeId
+                        }
+                    });
+                }
+                
+                var customer = new CustomerBo
+                {
+                  LastName = request.LastName,
+                  FirstName = request.FirstName,
+                  DateOfBirth =Convert.ToDateTime(request.DateOfBirth),
+                  CustomerAddress = customerAddress,
+                  CustomerContacts = customerContacts
+                };
+               var result= _customerRuleManager.UpdateCustomer(customer);
+               await Task.Delay(1000);
+               return new UpdateCustomerResponse{Successful = result};
+            }
+            catch (Exception e)
+            {
+                log.Error(e.Message);
+                throw new RpcException(new Status(StatusCode.Aborted,e.Message));
+            }
+        }
     }
 }

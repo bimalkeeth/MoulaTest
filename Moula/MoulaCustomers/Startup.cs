@@ -5,6 +5,8 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Moula.CustomerService;
+using MoulaCustomers.CustomerServiceImpl;
 using MoulaCustomers.DIContainer;
 
 [assembly: log4net.Config.XmlConfigurator(ConfigFile = "log4net.config")]
@@ -25,9 +27,11 @@ namespace MoulaCustomers
             {
                 mc.AddProfile(new AutoMapperConfiguration() );
             });
-            
-            services.Configure<Services.ConfigSettings>(Configuration.GetSection("ConfigSettings"));
+            services.AddSingleton<CustomerService.CustomerServiceBase, CustomerServiceProcess>();
+            services.AddSingleton<CustomerServiceProcess, CustomerServiceProcess>();
             ContainerInjector.Config(services,Configuration);
+            services.Configure<Services.ConfigSettings>(Configuration.GetSection("ConfigSettings"));
+            
             services.AddSingleton(mapping.CreateMapper());
         }
 

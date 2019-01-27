@@ -15,28 +15,6 @@
           "lib/netstandard2.0/AutoMapper.dll": {}
         }
       },
-      "Consul/0.7.2.6": {
-        "type": "package",
-        "dependencies": {
-          "NETStandard.Library": "1.6.1",
-          "Newtonsoft.Json": "10.0.2",
-          "System.Collections": "4.3.0",
-          "System.Linq": "4.3.0",
-          "System.Net.Http": "4.3.0",
-          "System.Net.Http.WinHttpHandler": "4.0.0",
-          "System.Runtime": "4.3.0",
-          "System.Security.Cryptography.X509Certificates": "4.3.0",
-          "System.Text.RegularExpressions": "4.3.0",
-          "System.Threading": "4.3.0",
-          "System.Threading.Thread": "4.0.0"
-        },
-        "compile": {
-          "lib/netstandard1.3/Consul.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard1.3/Consul.dll": {}
-        }
-      },
       "FluentValidation/8.1.2": {
         "type": "package",
         "dependencies": {
@@ -1633,6 +1611,19 @@
           "lib/netstandard1.0/_._": {}
         }
       },
+      "runtime.native.System.Security.Cryptography/4.0.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.NETCore.Platforms": "1.0.1",
+          "Microsoft.NETCore.Targets": "1.0.1"
+        },
+        "compile": {
+          "lib/netstandard1.0/_._": {}
+        },
+        "runtime": {
+          "lib/netstandard1.0/_._": {}
+        }
+      },
       "runtime.native.System.Security.Cryptography.Apple/4.3.0": {
         "type": "package",
         "dependencies": {
@@ -2093,15 +2084,15 @@
           "ref/netstandard1.3/_._": {}
         }
       },
-      "System.Globalization.Extensions/4.3.0": {
+      "System.Globalization.Extensions/4.0.1": {
         "type": "package",
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "1.1.0",
-          "System.Globalization": "4.3.0",
-          "System.Resources.ResourceManager": "4.3.0",
-          "System.Runtime": "4.3.0",
-          "System.Runtime.Extensions": "4.3.0",
-          "System.Runtime.InteropServices": "4.3.0"
+          "Microsoft.NETCore.Platforms": "1.0.1",
+          "System.Globalization": "4.0.11",
+          "System.Resources.ResourceManager": "4.0.1",
+          "System.Runtime": "4.1.0",
+          "System.Runtime.Extensions": "4.1.0",
+          "System.Runtime.InteropServices": "4.1.0"
         },
         "compile": {
           "ref/netstandard1.3/_._": {}
@@ -2322,38 +2313,38 @@
           "lib/netcoreapp2.1/_._": {}
         }
       },
-      "System.Net.Http/4.3.0": {
+      "System.Net.Http/4.1.0": {
         "type": "package",
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "1.1.0",
-          "System.Collections": "4.3.0",
-          "System.Diagnostics.Debug": "4.3.0",
-          "System.Diagnostics.DiagnosticSource": "4.3.0",
-          "System.Diagnostics.Tracing": "4.3.0",
-          "System.Globalization": "4.3.0",
-          "System.Globalization.Extensions": "4.3.0",
-          "System.IO": "4.3.0",
-          "System.IO.FileSystem": "4.3.0",
-          "System.Net.Primitives": "4.3.0",
-          "System.Resources.ResourceManager": "4.3.0",
-          "System.Runtime": "4.3.0",
-          "System.Runtime.Extensions": "4.3.0",
-          "System.Runtime.Handles": "4.3.0",
-          "System.Runtime.InteropServices": "4.3.0",
-          "System.Security.Cryptography.Algorithms": "4.3.0",
-          "System.Security.Cryptography.Encoding": "4.3.0",
-          "System.Security.Cryptography.OpenSsl": "4.3.0",
-          "System.Security.Cryptography.Primitives": "4.3.0",
-          "System.Security.Cryptography.X509Certificates": "4.3.0",
-          "System.Text.Encoding": "4.3.0",
-          "System.Threading": "4.3.0",
-          "System.Threading.Tasks": "4.3.0",
-          "runtime.native.System": "4.3.0",
-          "runtime.native.System.Net.Http": "4.3.0",
-          "runtime.native.System.Security.Cryptography.OpenSsl": "4.3.0"
+          "Microsoft.NETCore.Platforms": "1.0.1",
+          "System.Collections": "4.0.11",
+          "System.Diagnostics.Debug": "4.0.11",
+          "System.Diagnostics.DiagnosticSource": "4.0.0",
+          "System.Diagnostics.Tracing": "4.1.0",
+          "System.Globalization": "4.0.11",
+          "System.Globalization.Extensions": "4.0.1",
+          "System.IO": "4.1.0",
+          "System.IO.FileSystem": "4.0.1",
+          "System.Net.Primitives": "4.0.11",
+          "System.Resources.ResourceManager": "4.0.1",
+          "System.Runtime": "4.1.0",
+          "System.Runtime.Extensions": "4.1.0",
+          "System.Runtime.Handles": "4.0.1",
+          "System.Runtime.InteropServices": "4.1.0",
+          "System.Security.Cryptography.Algorithms": "4.2.0",
+          "System.Security.Cryptography.Encoding": "4.0.0",
+          "System.Security.Cryptography.OpenSsl": "4.0.0",
+          "System.Security.Cryptography.Primitives": "4.0.0",
+          "System.Security.Cryptography.X509Certificates": "4.1.0",
+          "System.Text.Encoding": "4.0.11",
+          "System.Threading": "4.0.11",
+          "System.Threading.Tasks": "4.0.11",
+          "runtime.native.System": "4.0.0",
+          "runtime.native.System.Net.Http": "4.0.1",
+          "runtime.native.System.Security.Cryptography": "4.0.0"
         },
         "compile": {
-          "ref/netstandard1.3/System.Net.Http.dll": {}
+          "ref/netstandard1.3/_._": {}
         },
         "runtimeTargets": {
           "runtimes/unix/lib/netstandard1.6/System.Net.Http.dll": {
@@ -2361,43 +2352,6 @@
             "rid": "unix"
           },
           "runtimes/win/lib/netstandard1.3/System.Net.Http.dll": {
-            "assetType": "runtime",
-            "rid": "win"
-          }
-        }
-      },
-      "System.Net.Http.WinHttpHandler/4.0.0": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.NETCore.Platforms": "1.0.1",
-          "Microsoft.Win32.Primitives": "4.0.1",
-          "System.Collections": "4.0.11",
-          "System.Diagnostics.Debug": "4.0.11",
-          "System.Diagnostics.DiagnosticSource": "4.0.0",
-          "System.Globalization": "4.0.11",
-          "System.IO": "4.1.0",
-          "System.IO.Compression": "4.1.0",
-          "System.Net.Http": "4.1.0",
-          "System.Net.Primitives": "4.0.11",
-          "System.Resources.ResourceManager": "4.0.1",
-          "System.Runtime": "4.1.0",
-          "System.Runtime.Extensions": "4.1.0",
-          "System.Runtime.Handles": "4.0.1",
-          "System.Runtime.InteropServices": "4.1.0",
-          "System.Security.Cryptography.X509Certificates": "4.1.0",
-          "System.Text.Encoding": "4.0.11",
-          "System.Threading": "4.0.11",
-          "System.Threading.Tasks": "4.0.11"
-        },
-        "compile": {
-          "ref/netstandard1.3/System.Net.Http.WinHttpHandler.dll": {}
-        },
-        "runtimeTargets": {
-          "runtimes/unix/lib/netstandard1.3/System.Net.Http.WinHttpHandler.dll": {
-            "assetType": "runtime",
-            "rid": "unix"
-          },
-          "runtimes/win/lib/netstandard1.3/System.Net.Http.WinHttpHandler.dll": {
             "assetType": "runtime",
             "rid": "win"
           }
@@ -2435,13 +2389,13 @@
           }
         }
       },
-      "System.Net.Primitives/4.3.0": {
+      "System.Net.Primitives/4.0.11": {
         "type": "package",
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "1.1.0",
-          "Microsoft.NETCore.Targets": "1.1.0",
-          "System.Runtime": "4.3.0",
-          "System.Runtime.Handles": "4.3.0"
+          "Microsoft.NETCore.Platforms": "1.0.1",
+          "Microsoft.NETCore.Targets": "1.0.1",
+          "System.Runtime": "4.1.0",
+          "System.Runtime.Handles": "4.0.1"
         },
         "compile": {
           "ref/netstandard1.3/System.Net.Primitives.dll": {}
@@ -3453,19 +3407,6 @@
         "lib/netstandard2.0/AutoMapper.dll",
         "lib/netstandard2.0/AutoMapper.pdb",
         "lib/netstandard2.0/AutoMapper.xml"
-      ]
-    },
-    "Consul/0.7.2.6": {
-      "sha512": "P1fWEDOVsfksYvjzjObwd9KEqAOoEFdqTfEemY+XKojEgL+H0OALw9SBBYTIjqi1GKv0Kql8fb2/ZUe/E8Dk5w==",
-      "type": "package",
-      "path": "consul/0.7.2.6",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "consul.0.7.2.6.nupkg.sha512",
-        "consul.nuspec",
-        "lib/net45/Consul.dll",
-        "lib/netstandard1.3/Consul.dll"
       ]
     },
     "FluentValidation/8.1.2": {
@@ -5491,6 +5432,20 @@
         "runtime.native.system.net.http.nuspec"
       ]
     },
+    "runtime.native.System.Security.Cryptography/4.0.0": {
+      "sha512": "g7i+/h9251NG6i5JzyeqhkiYEwNN1uKEWscA3bFVYClop8HZgGdwQYwEJuMErvHvwks6vUxX95LLMkScKt8TEA==",
+      "type": "package",
+      "path": "runtime.native.system.security.cryptography/4.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "ThirdPartyNotices.txt",
+        "dotnet_library_license.txt",
+        "lib/netstandard1.0/_._",
+        "runtime.native.system.security.cryptography.4.0.0.nupkg.sha512",
+        "runtime.native.system.security.cryptography.nuspec"
+      ]
+    },
     "runtime.native.System.Security.Cryptography.Apple/4.3.0": {
       "sha512": "I8apmzI81xzcsoxvqnHwmfaf8JctUSVgeui7yZunwIUTVx0UUm6MKAWrOotw09Om3XbfoZMyA5PssFkG7pHzfQ==",
       "type": "package",
@@ -6759,10 +6714,10 @@
         "system.globalization.calendars.nuspec"
       ]
     },
-    "System.Globalization.Extensions/4.3.0": {
-      "sha512": "pNNgAD+V4MMe3znAuR4cc4UKYKxdADKxfbiIo8fXE0zvms2XIZ0UF0rSE7fARPSbNkzFcgBz6/y24b9uTsJM5Q==",
+    "System.Globalization.Extensions/4.0.1": {
+      "sha512": "QVq0SqPka1mtHTFM7aEfncePha3t49rs6WyDyYRI4qDK1+eQRe3u6sqGGBFcOFFzZLAM3ZoKcijn2h68NCsBFg==",
       "type": "package",
-      "path": "system.globalization.extensions/4.3.0",
+      "path": "system.globalization.extensions/4.0.1",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -6796,7 +6751,7 @@
         "runtimes/unix/lib/netstandard1.3/System.Globalization.Extensions.dll",
         "runtimes/win/lib/net46/System.Globalization.Extensions.dll",
         "runtimes/win/lib/netstandard1.3/System.Globalization.Extensions.dll",
-        "system.globalization.extensions.4.3.0.nupkg.sha512",
+        "system.globalization.extensions.4.0.1.nupkg.sha512",
         "system.globalization.extensions.nuspec"
       ]
     },
@@ -7366,10 +7321,10 @@
         "version.txt"
       ]
     },
-    "System.Net.Http/4.3.0": {
-      "sha512": "6BBc6BUa7pWFL7KUI/c8wb18IobTZHTtcQKksxJI5F9DRDShdtOvBEJzg5jJbFdTll7gRE+5yXUlq72ciLE+QQ==",
+    "System.Net.Http/4.1.0": {
+      "sha512": "Ve8vcneE50S6BpvAzdFYbtcUy5I5q3JMZQYpBV9PLp+ISTr9F26DPUbRSTl0qOlcgFxO1NmJ8JXW3vjTkyL9fA==",
       "type": "package",
-      "path": "system.net.http/4.3.0",
+      "path": "system.net.http/4.1.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -7444,37 +7399,8 @@
         "runtimes/win/lib/net46/System.Net.Http.dll",
         "runtimes/win/lib/netcore50/System.Net.Http.dll",
         "runtimes/win/lib/netstandard1.3/System.Net.Http.dll",
-        "system.net.http.4.3.0.nupkg.sha512",
+        "system.net.http.4.1.0.nupkg.sha512",
         "system.net.http.nuspec"
-      ]
-    },
-    "System.Net.Http.WinHttpHandler/4.0.0": {
-      "sha512": "HjQb57X5U18C86jM/stAbNZwU0I2C/g90+nL52BBnpXpH5OM4Yza/9MXE0EVxqHDgl/opN7cpira+GW3uDt9PQ==",
-      "type": "package",
-      "path": "system.net.http.winhttphandler/4.0.0",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "ThirdPartyNotices.txt",
-        "dotnet_library_license.txt",
-        "lib/net46/System.Net.Http.WinHttpHandler.dll",
-        "ref/netstandard1.3/System.Net.Http.WinHttpHandler.dll",
-        "ref/netstandard1.3/System.Net.Http.WinHttpHandler.xml",
-        "ref/netstandard1.3/de/System.Net.Http.WinHttpHandler.xml",
-        "ref/netstandard1.3/es/System.Net.Http.WinHttpHandler.xml",
-        "ref/netstandard1.3/fr/System.Net.Http.WinHttpHandler.xml",
-        "ref/netstandard1.3/it/System.Net.Http.WinHttpHandler.xml",
-        "ref/netstandard1.3/ja/System.Net.Http.WinHttpHandler.xml",
-        "ref/netstandard1.3/ko/System.Net.Http.WinHttpHandler.xml",
-        "ref/netstandard1.3/ru/System.Net.Http.WinHttpHandler.xml",
-        "ref/netstandard1.3/zh-hans/System.Net.Http.WinHttpHandler.xml",
-        "ref/netstandard1.3/zh-hant/System.Net.Http.WinHttpHandler.xml",
-        "runtimes/unix/lib/netstandard1.3/System.Net.Http.WinHttpHandler.dll",
-        "runtimes/win/lib/net46/System.Net.Http.WinHttpHandler.dll",
-        "runtimes/win/lib/netcore50/_._",
-        "runtimes/win/lib/netstandard1.3/System.Net.Http.WinHttpHandler.dll",
-        "system.net.http.winhttphandler.4.0.0.nupkg.sha512",
-        "system.net.http.winhttphandler.nuspec"
       ]
     },
     "System.Net.NameResolution/4.0.0": {
@@ -7519,10 +7445,10 @@
         "system.net.nameresolution.nuspec"
       ]
     },
-    "System.Net.Primitives/4.3.0": {
-      "sha512": "n3/ezjMKgfMxLqfIBJJ4UkE77iySnzBmtzaZOAPfR8wGkvvKI2wiK/GdyPWbQvVPKkwA2ppNYk5FjaWHTRJ85g==",
+    "System.Net.Primitives/4.0.11": {
+      "sha512": "UNWpd6SSb7+vR7xGVhEe1u24u2rP/wzFwu6cEEYoolXIKYpknzPKKr35x9rPS/vxXkirf5K9eXt9UMoyj6xIuQ==",
       "type": "package",
-      "path": "system.net.primitives/4.3.0",
+      "path": "system.net.primitives/4.0.11",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -7594,7 +7520,7 @@
         "ref/xamarinmac20/_._",
         "ref/xamarintvos10/_._",
         "ref/xamarinwatchos10/_._",
-        "system.net.primitives.4.3.0.nupkg.sha512",
+        "system.net.primitives.4.0.11.nupkg.sha512",
         "system.net.primitives.nuspec"
       ]
     },
@@ -10250,10 +10176,8 @@
     ".NETCoreApp,Version=v2.1": [
       "BIRuleManager >= 1.0.0",
       "BIRuleProcessor >= 1.0.0",
-      "Consul >= 0.7.2.6",
       "DataAccess >= 1.0.0",
       "FluentValidation.AspNetCore >= 8.1.2",
-      "Grpc.Core >= 1.18.0",
       "Microsoft.AspNetCore.Hosting >= 2.2.0",
       "Microsoft.Extensions.Configuration >= 2.2.0",
       "Microsoft.Extensions.Configuration.Json >= 2.2.0",
@@ -10318,17 +10242,9 @@
     "frameworks": {
       "netcoreapp2.1": {
         "dependencies": {
-          "Consul": {
-            "target": "Package",
-            "version": "[0.7.2.6, )"
-          },
           "FluentValidation.AspNetCore": {
             "target": "Package",
             "version": "[8.1.2, )"
-          },
-          "Grpc.Core": {
-            "target": "Package",
-            "version": "[1.18.0, )"
           },
           "Microsoft.AspNetCore.Hosting": {
             "target": "Package",
