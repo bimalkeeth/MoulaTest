@@ -1,7 +1,5 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Moula", "Moula\Moula.csproj", "{237FA4E9-EB33-499A-B6C4-54657450A701}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProtoMediator", "ProtoMediator\ProtoMediator.csproj", "{04A6D435-D808-4E9A-B939-F83C2B6957CA}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoulaCustomers", "MoulaCustomers\MoulaCustomers.csproj", "{0575D55A-1546-450A-B80B-17393E9D5567}"
@@ -14,16 +12,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BIRuleProcessor", "BIRulePr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccess", "DataAccess\DataAccess.csproj", "{7E735A71-5121-40DE-B132-26EDC878A89F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoulaUi", "MoulaUi\MoulaUi.csproj", "{1528380E-F1EA-4CA3-95A8-FFCDB5754F4B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{237FA4E9-EB33-499A-B6C4-54657450A701}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{237FA4E9-EB33-499A-B6C4-54657450A701}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{237FA4E9-EB33-499A-B6C4-54657450A701}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{237FA4E9-EB33-499A-B6C4-54657450A701}.Release|Any CPU.Build.0 = Release|Any CPU
 		{04A6D435-D808-4E9A-B939-F83C2B6957CA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{04A6D435-D808-4E9A-B939-F83C2B6957CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{04A6D435-D808-4E9A-B939-F83C2B6957CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -48,5 +44,9 @@ Global
 		{7E735A71-5121-40DE-B132-26EDC878A89F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7E735A71-5121-40DE-B132-26EDC878A89F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7E735A71-5121-40DE-B132-26EDC878A89F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1528380E-F1EA-4CA3-95A8-FFCDB5754F4B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1528380E-F1EA-4CA3-95A8-FFCDB5754F4B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1528380E-F1EA-4CA3-95A8-FFCDB5754F4B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1528380E-F1EA-4CA3-95A8-FFCDB5754F4B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
