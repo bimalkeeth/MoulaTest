@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+protoc -I CustomerProto --csharp_out CustomerProto --grpc_out CustomerProto ./CustomerProto/CustomerService.proto --plugin=protoc-gen-grpc=../../../../.nuget/packages/grpc.tools/1.18.0/tools/linux_x64/grpc_csharp_plugin

@@ -1,5 +1,6 @@
 using System;
 using System.Threading.Tasks;
+using DataAccess.Entities;
 using DataAccess.Repositories;
 using DataAccess.Repositories.Interfaces;
 
@@ -7,6 +8,7 @@ namespace DataAccess
 {
     public interface IUnitOfWork:IDisposable
     {
+       CustomerDbContext Context { get; }
        /// <summary>
        /// Save changes for commiting changes to database
        /// </summary>

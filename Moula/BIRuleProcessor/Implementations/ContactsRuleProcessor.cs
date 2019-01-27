@@ -62,10 +62,15 @@ namespace BIRuleProcessor.Implementations
             return _mapper.Map<Contacts, ContactsBo>(data);
         }
 
-        public IEnumerable<ContactsBo> GetAllAddressWithDetail()
+        public IEnumerable<ContactsBo> GetAllContactsWithDetail()
         {
             var data = _unitOfWork.ContactsRepo.GetAllContactsWithDetail();
             return _mapper.Map<IEnumerable<Contacts>, IEnumerable<ContactsBo>>(data);
+        }
+        
+        public IEnumerable<ContactTypeBo> GetAllContactTypes()
+        {
+            return _mapper.Map<IEnumerable<ContactType>, IEnumerable<ContactTypeBo>>(_unitOfWork.ContactTypeRepo.FindAll());
         }
     }
 }

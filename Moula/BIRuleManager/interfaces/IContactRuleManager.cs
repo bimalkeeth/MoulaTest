@@ -1,42 +1,41 @@
 using System.Collections.Generic;
 using CommonContracts;
 
-namespace BIRuleProcessor.Interfaces
+namespace BIRuleManager.interfaces
 {
-    public interface IContactsRuleProcessor
+    public interface IContactRuleManager
     {
         /// <summary>
-        /// Create Contacts
+        /// Create contacts
         /// </summary>
         /// <param name="contactList"></param>
         /// <returns></returns>
         IEnumerable<int> CreateContacts(IEnumerable<ContactsBo> contactList);
-
+        
         /// <summary>
         /// Update Contacts
         /// </summary>
         /// <param name="contactList"></param>
         /// <returns></returns>
         bool UpdateContacts(IEnumerable<ContactsBo> contactList);
+        
         /// <summary>
-        /// Get contacts by id
+        /// Get contact with Detail By Id
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
         ContactsBo GetContactWithDetailById(int id);
-
+        
         /// <summary>
-        /// Get all contacts with detail 
+        /// Get all Address with Detail
         /// </summary>
         /// <returns></returns>
         IEnumerable<ContactsBo> GetAllContactsWithDetail();
-
+        
         /// <summary>
-        /// Get all Contact Types
+        /// Get all contact Types
         /// </summary>
         /// <returns></returns>
         IEnumerable<ContactTypeBo> GetAllContactTypes();
-
-
     }
 }

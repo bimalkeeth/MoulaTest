@@ -39,4 +39,10 @@
     <data name="Error_InstanceContactsIdCustomerId">
         <value>Customer Id or ContactId of  {0} object is null or empty</value>
     </data>
+    <data name="Error_InDateOfBirth">
+        <value>Customer Date of Birth Invalid or null.</value>
+    </data>
+    <data name="Error_InTopCount">
+        <value>Top count value cannot be zero.</value>
+    </data>
 </root>

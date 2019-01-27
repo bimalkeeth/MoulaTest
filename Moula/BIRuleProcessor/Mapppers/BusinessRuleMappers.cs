@@ -78,16 +78,50 @@ namespace BIRuleProcessor.Mapppers
                     .ForMember(des => des.LastName, src => src.MapFrom(d => d.LastName))
                     .ForMember(des => des.CustomerCode, src => src.MapFrom(d => d.CustomerCode))
                     .ForMember(des => des.DateOfBirth, src => src.MapFrom(d => d.DateOfBirth))
-                    .IgnoreAllPropertiesWithAnInaccessibleSetter().ReverseMap().AfterMap((target, source) =>
+                    .AfterMap((source,target) =>
                         {
                             target.FullName = $"{source.FirstName} {source.LastName}";
-                            target.Email = source.CustomerContacts.Select(s =>
+                            var contact = source.CustomerContacts.Select(s =>
                                 new
                                 {
+                                    CustomerContactId=s.Id,
+                                    s.Contact.ContactTypeId,
+                                    s.ContactId,
                                     s.Contact.Contact,
                                     s.Contact.ContactType.ContactTypeAbbr
-                                }).FirstOrDefault(d => d.ContactTypeAbbr == "EMAIL")
-                                ?.Contact;
+                                }).FirstOrDefault(d => d.ContactTypeId == 1);
+                            if (contact != null)
+                            {
+                                target.Contact = contact.Contact;
+                                target.ContactId = contact.ContactId;
+                                target.ContactTypeId = contact.ContactTypeId;
+                                target.CustomerContactId = contact.CustomerContactId;
+                            }
+                            var address = source.CustomerAddress.Select(s =>
+                                new
+                                {
+                                    CustomerAddressId=s.Id,
+                                    s.Address.AddressTypeId,
+                                    s.AddressId,
+                                    s.Address.Street,
+                                    s.Address.Street2,
+                                    s.Address.Suburb,
+                                    s.Address.StateId,
+                                    s.Address.State.StateName,
+                                    s.Address.Country,
+                                    s.Address.AddressType.AddressTypeAbbr
+                                }).FirstOrDefault(d => d.AddressTypeId == 2);
+
+                            if (address == null) return;
+                            target.Street2 = address.Street2;
+                            target.Street = address.Street;
+                            target.AddressTypeId = address.AddressTypeId;
+                            target.CustomerAddressId = address.CustomerAddressId;
+                            target.Suburb = address.Suburb;
+                            target.StateId = address.StateId;
+                            target.AddressId = address.AddressId;
+                            target.StateName = address.StateName;
+                            target.Country= address.Country;
                         });
             }
        

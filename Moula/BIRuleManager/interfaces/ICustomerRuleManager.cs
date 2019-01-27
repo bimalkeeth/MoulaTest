@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using CommonContracts;
 
 namespace BIRuleManager.interfaces
@@ -16,5 +17,12 @@ namespace BIRuleManager.interfaces
         /// <param name="customer"></param>
         /// <returns></returns>
         bool UpdateCustomer(CustomerBo customer);
+
+        /// <summary>
+        /// Get Top Customers
+        /// </summary>
+        /// <param name="topCount"></param>
+        /// <returns></returns>
+        IEnumerable<CustomerDetailBo> GetTopCustomers(int topCount);
     }
 }

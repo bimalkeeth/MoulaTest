@@ -1,4 +1,6 @@
 using System.Reflection;
+using AutoMapper;
+using BIRuleProcessor.Mapppers;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -19,8 +21,14 @@ namespace MoulaCustomers
 
         public void ConfigurationService(IServiceCollection services)
         {
+            var mapping = new MapperConfiguration(mc =>
+            {
+                mc.AddProfile(new AutoMapperConfiguration() );
+            });
+            
             services.Configure<Services.ConfigSettings>(Configuration.GetSection("ConfigSettings"));
             ContainerInjector.Config(services,Configuration);
+            services.AddSingleton(mapping.CreateMapper());
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)

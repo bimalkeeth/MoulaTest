@@ -1,0 +1,120 @@
+syntax="proto3";
+
+package Moula;
+
+option csharp_namespace = "Moula.CustomerService";
+
+message CustomerRequest{
+    int32 Id=1;
+    string CustomerCode=2;
+    string FirstName=3;
+    string LastName=4;
+    string DateOfBirth=5;
+    repeated CustomerContactsRequest CustomerContacts=6;
+    repeated CustomerAddressRequest CustomerAddress=7;
+}
+
+message CustomerContactsRequest{
+    
+    int32 Id=1;
+    bool IsPrimary=2;
+    int32 CustomerId=3;
+    int32 ContactId=4;
+    ContactRequest Contact=5;
+}
+
+message ContactRequest{
+    int32 Id=1;
+    int32 ContactTypeId=2;
+    string Contact=3;
+}
+
+message CustomerAddressRequest{
+    int32 Id=1;
+    bool IsPrimary=2;
+    int32 CustomerId=3;
+    int32 AddressId=4;
+    AddressRequest Address=5;
+}
+message AddressRequest{
+    int32 Id=1;
+    int32 AddressTypeId=2;
+    string Street=3;
+    string Street2=4;
+    string Suburb=5;
+    int32 StateId=6;
+    string Country=7;
+}
+
+message CreateCustomerResponse{
+    bool successful=1;
+}
+
+message UpdateCustomerResponse{
+    bool successful=1;
+}
+
+message CustomerDetailRequest{
+    int32 TopCustomers=1;
+}
+
+message CustomerDetailResponse{
+    int32 Id=1;
+    string FirstName=2;
+    string LastName=3;
+    string FullName=4;
+    string Contact=5;
+    int32 ContactId=6;
+    int32 ContactTypeId=7;
+    int32 CustomerContactId=8;
+    int32 AddressId=9;
+    string Street=10;
+    string Street2=11;
+    string Suburb=12;
+    string StateName=13;
+    int32 StateId=14;
+    string Country=15;
+    int32 AddressTypeId=16;
+    int32 CustomerAddressId=17;
+    string CustomerCode=18;
+    string DateOfBirth=19;
+}
+
+message ContactTypeRequest{
+  bool successful=1;
+}
+
+message ContactTypeResponse{
+  int32 Id =1;
+  string ContactTypeAbbr=2; 
+  string ContactTypeName =3;
+}
+
+message AddressTypeRequest{
+    bool successful=1;
+}
+
+message AddressTypeResponse{
+  int32 Id =1;
+  string AddressTypeName =2;
+  string AddressTypeAbbr=3;
+}
+
+message StateRequest{
+  bool successful=1;
+}
+
+message StateResponse{
+  int32 Id =1;
+  string StateAbbr =2;
+  string StateName =3;
+}
+
+service CustomerService{
+    rpc CreateCustomer(CustomerRequest) returns(CreateCustomerResponse){}
+    rpc UpdateCustomer(CustomerRequest) returns(UpdateCustomerResponse){}
+    rpc GetTopCustomers(CustomerDetailRequest) returns(stream CustomerDetailResponse){}
+    rpc GetAllContactTypes(ContactTypeRequest)returns(stream ContactTypeResponse){}
+    rpc GetAllAddressTypes(AddressTypeRequest)returns(stream AddressTypeResponse){}
+    rpc GetAllStates(StateRequest)returns(stream StateResponse){}
+}

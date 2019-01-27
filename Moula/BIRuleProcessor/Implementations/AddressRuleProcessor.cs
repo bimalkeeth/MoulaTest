@@ -65,5 +65,16 @@ namespace BIRuleProcessor.Implementations
             var data = _unitOfWork.AddressRepo.GetAllAddressWithDetail();
             return _mapper.Map<IEnumerable<Address>, IEnumerable<AddressBo>>(data);
         }
+
+        public IEnumerable<AddressTypeBo> GetAllAddressType()
+        {
+            return _mapper.Map<IEnumerable<AddressType>, IEnumerable<AddressTypeBo>>(
+                _unitOfWork.AddressTypeRepo.FindAll());
+        }
+        
+        public IEnumerable<StateBo> GetAllStates()
+        {
+            return _mapper.Map<IEnumerable<States>, IEnumerable<StateBo>>(_unitOfWork.Context.States.ToArray());
+        }
     }
 }

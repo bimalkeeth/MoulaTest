@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Transactions;
@@ -27,6 +28,12 @@ namespace BIRuleManager.implementation
             _customerRulesProcessor = customerRulesProcessor ?? throw new ArgumentException(string.Format(BusinessRuleResource.Error_InstanceObject,nameof(customerRulesProcessor)));
             _mapper = mapper;
         }
+
+        public IEnumerable<CustomerDetailBo> GetTopCustomers(int topCount)
+        {
+           return _customerRulesProcessor.GetTopCustomers(topCount);
+        }
+        
         public bool CreateCustomer(CustomerBo customer)
         {
             if (customer == null)

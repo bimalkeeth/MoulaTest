@@ -31,5 +31,17 @@ namespace BIRuleProcessor.Interfaces
         /// <param name="addressList"></param>
         /// <returns></returns>
         bool UpdateAddress(IEnumerable<AddressBo> addressList);
+
+        /// <summary>
+        /// Get All Address Type
+        /// </summary>
+        /// <returns></returns>
+        IEnumerable<AddressTypeBo> GetAllAddressType();
+
+        /// <summary>
+        /// Get All State
+        /// </summary>
+        /// <returns></returns>
+        IEnumerable<StateBo> GetAllStates();
     }
 }
