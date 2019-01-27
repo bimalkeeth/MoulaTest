@@ -1,6 +1,7 @@
 using System;
 using System.Data;
 using System.Linq;
+using System.Transactions;
 using AutoMapper;
 using BIRuleManager.interfaces;
 using BIRuleProcessor.Interfaces;
@@ -32,74 +33,102 @@ namespace BIRuleManager.implementation
             {
                 throw new EvaluateException(BusinessRuleResource.Error_CustomerObject);
             }
-            var customerId = _customerRulesProcessor.CreateCustomer(customer);
-            if (customerId <= 0) return false;
-            var address= customer.CustomerAddress.Select(s => s.Address).ToArray();
-            if (address.Any())
+
+            using (var transaction = new TransactionScope())
             {
-                var addressSaved= _addressRuleProcessor.CreateAddress(address).ToArray();
-                if (addressSaved.Any())
+                try
                 {
-                    var count = 0;
-                    foreach( var customerAddress in  customer.CustomerAddress)
+                    var customerId = _customerRulesProcessor.CreateCustomer(customer);
+                    if (customerId <= 0) return false;
+                    var address = customer.CustomerAddress.Select(s => s.Address).ToArray();
+                    if (address.Any())
                     {
-                        customerAddress.AddressId = addressSaved[count];
-                        customerAddress.CustomerId = customerId;
-                        customerAddress.IsPrimary = customerAddress.IsPrimary;
-                        count++;
+                        var addressSaved = _addressRuleProcessor.CreateAddress(address).ToArray();
+                        if (addressSaved.Any())
+                        {
+                            var count = 0;
+                            foreach (var customerAddress in customer.CustomerAddress)
+                            {
+                                customerAddress.AddressId = addressSaved[count];
+                                customerAddress.CustomerId = customerId;
+                                customerAddress.IsPrimary = customerAddress.IsPrimary;
+                                count++;
+                            }
+                            _customerRulesProcessor.CreateCustomerAddress(customer.CustomerAddress);
+                        }
                     }
+    
+                    var contacts = customer.CustomerContacts.Select(s => s.Contact).ToArray();
+                    if (contacts.Any())
+                    {
+                        var savesContacts = _contactsRuleProcessor.CreateContacts(contacts).ToArray();
+                        if (savesContacts.Any())
+                        {
+                            var count = 0;
+                            foreach (var customerContact in customer.CustomerContacts)
+                            {
+                                customerContact.ContactId = savesContacts[count];
+                                customerContact.CustomerId = customerId;
+                                customerContact.IsPrimary = customerContact.IsPrimary;
+                                count++;
+                            }
+                            _customerRulesProcessor.CreateCustomerContacts(customer.CustomerContacts);
+                        }
+                    }
+                    transaction.Complete();
                 }
-            }
-            var contacts = customer.CustomerContacts.Select(s => s.Contact).ToArray();
-            if (contacts.Any()) 
-            {
-                var savesContacts=_contactsRuleProcessor.CreateContacts(contacts).ToArray();
-                if (savesContacts.Any())
+                catch (Exception e)
                 {
-                    var count = 0;
-                    foreach (var customerContact in customer.CustomerContacts)
-                    {
-                        customerContact.ContactId = savesContacts[count];
-                        customerContact.CustomerId = customerId;
-                        customerContact.IsPrimary = customerContact.IsPrimary;
-                        count++;
-                    }
+                    transaction.Dispose();
+                    throw e;
                 }
             }
             return true;
         }
         public bool UpdateCustomer(CustomerBo customer)
         {
-            if (customer == null)
+            using (var transaction = new TransactionScope())
             {
-                throw new EvaluateException(BusinessRuleResource.Error_CustomerObject);
-            }
-            if (customer.Id == 0)
-            {
-                throw new EvaluateException(string.Format(BusinessRuleResource.Error_InstanceId,nameof(customer)));
-            }
-            var customerUpdate = _customerRulesProcessor.UpdateCustomer(customer);
-            if (!customerUpdate) return false;
-            
-            var address= customer.CustomerAddress.Select(s => s.Address).ToArray();
-            var addressEmptyId= address.FirstOrDefault(s => s.Id == 0);
-            if (addressEmptyId != null)
-            {
-                throw new EvaluateException(string.Format(BusinessRuleResource.Error_InstanceIdFor,nameof(address),addressEmptyId.Street));
-            }
-            if (address.Any())
-            {
-                _addressRuleProcessor.UpdateAddress(address);
-            }
-            var contacts = customer.CustomerContacts.Select(s => s.Contact).ToArray();
-            var emptyContact=contacts.FirstOrDefault(s => s.Id == 0);
-            if (emptyContact != null)
-            {
-                throw new EvaluateException(string.Format(BusinessRuleResource.Error_InstanceIdFor,nameof(contacts),emptyContact.Contact));
-            }
-            if (contacts.Any()) 
-            {
-               _contactsRuleProcessor.UpdateContacts(contacts);
+                try
+                {
+                    if (customer == null)
+                    {
+                        throw new EvaluateException(BusinessRuleResource.Error_CustomerObject);
+                    }
+                    if (customer.Id == 0)
+                    {
+                        throw new EvaluateException(string.Format(BusinessRuleResource.Error_InstanceId,nameof(customer)));
+                    }
+                    var customerUpdate = _customerRulesProcessor.UpdateCustomer(customer);
+                    if (!customerUpdate) return false;
+                
+                    var address= customer.CustomerAddress.Select(s => s.Address).ToArray();
+                    var addressEmptyId= address.FirstOrDefault(s => s.Id == 0);
+                    if (addressEmptyId != null)
+                    {
+                        throw new EvaluateException(string.Format(BusinessRuleResource.Error_InstanceIdFor,nameof(address),addressEmptyId.Street));
+                    }
+                    if (address.Any())
+                    {
+                        _addressRuleProcessor.UpdateAddress(address);
+                    }
+                    var contacts = customer.CustomerContacts.Select(s => s.Contact).ToArray();
+                    var emptyContact=contacts.FirstOrDefault(s => s.Id == 0);
+                    if (emptyContact != null)
+                    {
+                        throw new EvaluateException(string.Format(BusinessRuleResource.Error_InstanceIdFor,nameof(contacts),emptyContact.Contact));
+                    }
+                    if (contacts.Any()) 
+                    {
+                        _contactsRuleProcessor.UpdateContacts(contacts);
+                    }
+                    transaction.Complete();
+                }
+                catch (Exception e)
+                {
+                    transaction.Dispose();
+                    throw e;
+                }
             }
             return true;
         }

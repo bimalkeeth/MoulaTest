@@ -41,5 +41,12 @@ namespace BIRuleProcessor.Interfaces
         /// <param name="customerContacts"></param>
         /// <returns></returns>
         bool UpdateCustomerContacts(IEnumerable<CustomerContactsBo> customerContacts);
+
+        /// <summary>
+        /// Create customer contacts
+        /// </summary>
+        /// <param name="customerContacts"></param>
+        /// <returns></returns>
+        IEnumerable<int> CreateCustomerContacts(IEnumerable<CustomerContactsBo> customerContacts);
     }
 }

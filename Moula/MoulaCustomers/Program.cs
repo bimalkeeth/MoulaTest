@@ -35,12 +35,12 @@ namespace MoulaCustomers
             
             var serviceProvider = new ServiceCollection()
                                     .AddLogging()
-                                    .AddDbContext<CustomerDbContext>(option=>option.UseSqlServer("Server=localhost;Database=CustomerDbx;User=sa;Password=Scala@1234;"))
+                                    .AddDbContext<CustomerDbContext>(option=>option.UseSqlServer("Server=localhost;Database=CustomersDb;User=sa;Password=Scala@1234;"))
                                     .AddTransient<ICustomerRuleManager, CustomerRuleManager>()
                                     .AddTransient<IAddressRuleProcessor, AddressRuleProcessor>()
                                     .AddTransient<IContactsRuleProcessor, ContactsRuleProcessor>()
                                     .AddTransient<ICustomerRulesProcessor, CustomerRulesProcessor>()
-                                    .AddSingleton<IUnitOfWork, UnitOfWork>()
+                                    .AddTransient<IUnitOfWork, UnitOfWork>()
                                     .AddSingleton<IRepositoryFactory,RepositoryFactory>()
                                     .AddSingleton(mapping.CreateMapper())
                                     .BuildServiceProvider();
@@ -52,7 +52,7 @@ namespace MoulaCustomers
            
            customer.CreateCustomer(new CustomerBo
            {
-               LastName = "Kaluarachchi",
+               LastName = "KaluarachchiC",
                FirstName = "Bimal",
                DateOfBirth = DateTime.Now,
                CustomerAddress = new List<CustomerAddressBo>

@@ -117,6 +117,28 @@ namespace BIRuleProcessor.Implementations
             return true;
         }
         
+        public IEnumerable<int> CreateCustomerContacts(IEnumerable<CustomerContactsBo> customerContacts)
+        {
+            var customerContactsBos = customerContacts as CustomerContactsBo[] ?? customerContacts.ToArray();
+            var customerCon=customerContactsBos.FirstOrDefault(s => s.ContactId == 0 || s.CustomerId == 0);
+            if (customerCon != null)
+            {
+                throw new DataException(string.Format(BusinessRuleResource.Error_InstanceAddressIdCustomerId,nameof(CustomerAddressBo))); 
+            }
+            var address= customerContactsBos.Select(d =>
+                new CustomerContacts
+                {
+                    ContactId = d.ContactId,
+                    CustomerId = d.CustomerId,
+                    IsPrimaryint = d.IsPrimary
+
+                }).ToArray();
+            _unitOfWork.CustomerContactsRepo.CreateRange(address);
+            _unitOfWork.SaveChanges();
+            return address.Select(d=>d.Id);
+        }
+        
+        
         public bool UpdateCustomerContacts(IEnumerable<CustomerContactsBo> customerContacts)
         {
             var customerContactsBos = customerContacts as CustomerContactsBo[] ?? customerContacts.ToArray();

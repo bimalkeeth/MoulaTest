@@ -45,6 +45,8 @@ namespace DataAccess.Entities
                     .HasName("Address_pk")
                     .ForSqlServerIsClustered(false);
 
+                entity.Property(e => e.Id).ValueGeneratedOnAdd();
+                
                 entity.Property(e => e.Country)
                     .IsRequired()
                     .HasMaxLength(200);
@@ -77,6 +79,8 @@ namespace DataAccess.Entities
                 entity.HasKey(e => e.Id)
                     .HasName("AddressType_pk")
                     .ForSqlServerIsClustered(false);
+                
+                entity.Property(e => e.Id).ValueGeneratedNever();
 
                 entity.HasIndex(e => e.AddressTypeAbbr)
                     .HasName("AddressType_AddressTypeAbbr_uindex")
@@ -100,7 +104,9 @@ namespace DataAccess.Entities
                 entity.HasKey(e => e.Id)
                     .HasName("ContactType_pk")
                     .ForSqlServerIsClustered(false);
-
+                
+                entity.Property(e => e.Id).ValueGeneratedNever();
+                
                 entity.HasIndex(e => e.ContactTypeAbbr)
                     .HasName("ContactType_ContactTypeAbbr_uindex")
                     .IsUnique();
@@ -123,6 +129,8 @@ namespace DataAccess.Entities
                 entity.HasKey(e => e.Id)
                     .HasName("Contacts_pk")
                     .ForSqlServerIsClustered(false);
+                
+                entity.Property(e => e.Id).ValueGeneratedOnAdd();
 
                 entity.Property(e => e.Contact)
                     .IsRequired()
@@ -144,7 +152,7 @@ namespace DataAccess.Entities
                     .HasName("CudtomerAddress_CustomerId_AddressId_uindex")
                     .IsUnique();
 
-                entity.Property(e => e.Id).ValueGeneratedNever();
+                entity.Property(e => e.Id).ValueGeneratedOnAdd();
 
                 entity.HasOne(d => d.Address)
                     .WithMany(p => p.CustomerAddress)
@@ -162,6 +170,8 @@ namespace DataAccess.Entities
                 entity.HasKey(e => e.Id)
                     .HasName("CustomerContacts_pk")
                     .ForSqlServerIsClustered(false);
+                
+                entity.Property(e => e.Id).ValueGeneratedOnAdd();
 
                 entity.HasIndex(e => new { e.CustomerId, e.ContactId })
                     .HasName("CustomerContacts_CustomerId_ContactId_uindex")
@@ -187,6 +197,8 @@ namespace DataAccess.Entities
                 entity.HasIndex(e => e.CustomerCode)
                     .HasName("Customers_CustomerCode_uindex")
                     .IsUnique();
+                
+                entity.Property(e => e.Id).ValueGeneratedOnAdd();
 
                 entity.Property(e => e.CustomerCode)
                     .IsRequired()
@@ -208,7 +220,9 @@ namespace DataAccess.Entities
                 entity.HasKey(e => e.Id)
                     .HasName("States_pk")
                     .ForSqlServerIsClustered(false);
-
+                
+                entity.Property(e => e.Id).ValueGeneratedNever();
+                
                 entity.HasIndex(e => e.StateAbbr)
                     .HasName("States_StateAbbr_uindex")
                     .IsUnique();
