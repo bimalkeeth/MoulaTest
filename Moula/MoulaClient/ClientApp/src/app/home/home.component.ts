@@ -23,7 +23,7 @@ export class HomeComponent implements OnInit, OnDestroy{
   inputLastNameControl:FormControl;
   inputEmailControl:FormControl;
   inputDateOfBirthControl:FormControl;
-  topListOfCustomer:ICustomerDetail[];
+  topListOfCustomer:any[];
 
   constructor( @Inject(CustomerServiceService) public customerService: CustomerServiceService,
                @Inject(FormBuilder) public formBuilder: FormBuilder,
@@ -51,9 +51,18 @@ export class HomeComponent implements OnInit, OnDestroy{
       customerLastNameCtrl:this.inputLastNameControl,
       customerEmailCtrl:this.inputEmailControl,
       customerDateOfBirthCtrl:this.inputDateOfBirthControl,
+    });
+    this.LoadCustomersTop();
+
+  }
+
+  LoadCustomersTop(){
+    this.customerService.GetTopCustomers(3).toPromise().then(data => {
+      this.topListOfCustomer = data;
 
     });
   }
+
   ProcessData():void{
     try {
           if(!ValidationUtil.IsEmail(this.moulaCustomer.EmailAddress)){
@@ -106,11 +115,7 @@ export class HomeComponent implements OnInit, OnDestroy{
             CustomerAddress:[customerAddress]
           };
           this.customerService.CreateCustomer(customerRequest);
-          //let dd= this.customerService.GetTopCustomers(3)
-           // dd.pipe(map(z=>z.forEach(e=>{
-           //     this.topListOfCustomer.push(e);
-           // })))
-
+          this.LoadCustomersTop();
     }
     catch(e){
       this.toastr.error('Error occured when creating customer.', 'Major Error', {

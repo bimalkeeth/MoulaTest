@@ -29,18 +29,20 @@ export class CustomerServiceService {
   //----------------------------------------------
   // Get Top Customer
   //----------------------------------------------
-  GetTopCustomers(topCustomer:number):ICustomerDetail[]{
+  GetTopCustomers(topCustomer:number):Observable<ICustomerDetail[]>{
 
-    this.http.get<ICustomerDetail[]>(this.baseUrl+"api/CustomerApi/GetTopCustomer").toPromise().then(data => {
-      this.topListOfCustomer = data;
-      console.log('Promise resolved.')
-    });
-    return this.topListOfCustomer;
+    // this.http.get<ICustomerDetail[]>(this.baseUrl+"api/CustomerApi/GetTopCustomer").toPromise().then(data => {
+    //   this.topListOfCustomer = data;
+    //   console.log('Promise resolved.')
+    // });
+    // return this.topListOfCustomer;
 
-    // return this.http.get<ICustomerDetail[]>(this.baseUrl+"api/CustomerApi/GetTopCustomer/"+topCustomer)
-    //   .pipe(
-    //   catchError((error: any) => {
-    //     return of(error);
-    //   }));
+    return this.http.get<ICustomerDetail[]>(this.baseUrl+"api/CustomerApi/GetTopCustomer")
+      .pipe(
+      catchError((error: any) => {
+        return of(error);
+      }));
+
+
   }
 }
