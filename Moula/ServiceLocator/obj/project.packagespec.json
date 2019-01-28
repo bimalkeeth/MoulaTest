@@ -14,7 +14,14 @@
     ],
     "frameworks": {
       "netcoreapp2.1": {
-        "projectReferences": {}
+        "projectReferences": {
+          "/home/bill/RiderProjects/MoulaTest/Moula/ClientCommon/ClientCommon.csproj": {
+            "projectPath": "/home/bill/RiderProjects/MoulaTest/Moula/ClientCommon/ClientCommon.csproj"
+          },
+          "/home/bill/RiderProjects/MoulaTest/Moula/ProtoMediator/ProtoMediator.csproj": {
+            "projectPath": "/home/bill/RiderProjects/MoulaTest/Moula/ProtoMediator/ProtoMediator.csproj"
+          }
+        }
       }
     },
     "warningProperties": {

@@ -28,7 +28,7 @@ namespace MoulaClient
             var channel = new Channel("127.0.0.1:8081", ChannelCredentials.Insecure);
             var client = new CustomerService.CustomerServiceClient(channel);
             services.AddSingleton(client);
-            services.AddTransient<ICustomerServiceRequester,CustomerServiceRequester>()
+            services.AddTransient<ICustomerServiceRequester, CustomerServiceRequester>();
             services.AddAutoMapper();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             services.AddSpaStaticFiles(configuration => { configuration.RootPath = "ClientApp/dist"; });

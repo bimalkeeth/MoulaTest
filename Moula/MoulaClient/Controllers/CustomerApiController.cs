@@ -1,3 +1,6 @@
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using MoulaClient.Contract;
@@ -18,9 +21,14 @@ namespace MoulaClient.Controllers
             _requester = requester;
         }
         [HttpPut("[action]")]
-        public IActionResult CreateCustomer([FromBody]CustomerRequestVM request)
+        public bool CreateCustomer([FromBody]CustomerRequestVM request)
         {
-            return NotFound("");
-        } 
+          return  _requester.CreateCustomer(request);
+        }
+        [HttpGet("[action]")]
+        public async Task<IEnumerable<CustomerDetailVM>>GetTopCustomer()
+        {
+            return await _requester.GetTopCustomers(5);
+        }
     }
 }
