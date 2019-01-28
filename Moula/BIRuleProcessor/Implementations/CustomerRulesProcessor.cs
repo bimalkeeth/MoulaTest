@@ -162,10 +162,6 @@ namespace BIRuleProcessor.Implementations
             _unitOfWork.SaveChanges();
             return true;
         }
-        
-        
-        
-        
         public IEnumerable<CustomerDetailBo> GetTopCustomers(int topCount)
         {
            var data=_unitOfWork.CustomerRepo.GetCustomerWithDetailByWithOrder(topCount);
