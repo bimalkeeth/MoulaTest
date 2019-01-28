@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "rhipecode": {
+    "moulaclient": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
@@ -23,7 +23,8 @@
             "styles": [
               "src/styles.css",
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
-              "js/jsxgraph.css"
+              "js/jsxgraph.css",
+              "node_modules/ngx-toastr/toastr.css"
             ],
             "scripts": ["js/jsxgraphcore.min.js"]
           },
@@ -50,18 +51,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "rhipecode:build"
+            "browserTarget": "moulaclient:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "rhipecode:build:production"
+              "browserTarget": "moulaclient:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "rhipecode:build"
+            "browserTarget": "moulaclient:build"
           }
         },
         "test": {
@@ -95,7 +96,7 @@
         }
       }
     },
-    "rhipecode-e2e": {
+    "moulaclient-e2e": {
       "root": "e2e",
       "sourceRoot": "e2e",
       "projectType": "application",
@@ -104,7 +105,7 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "./protractor.conf.js",
-            "devServerTarget": "rhipecode:serve"
+            "devServerTarget": "moulaclient:serve"
           }
         },
         "lint": {
@@ -121,7 +122,7 @@
       }
     }
   },
-  "defaultProject": "rhipecode",
+  "defaultProject": "moulaclient",
   "schematics": {
     "@schematics/angular:component": {
       "prefix": "app",

@@ -7,10 +7,11 @@ import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HomeComponent } from './home/home.component';
-import { DrawingService } from './services/drawingservice.service';
 import {CommonModule} from "@angular/common";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {ToastrModule} from "ngx-toastr";
+import 'ngx-toastr/toastr.css';
+import {CustomerServiceService} from "./services/customer-service.service";
 
 @NgModule({
   declarations: [
@@ -34,7 +35,7 @@ import {ToastrModule} from "ngx-toastr";
       { path: '', component: HomeComponent, pathMatch: 'full' },
     ])
   ],
-  providers: [DrawingService],
+  providers: [CustomerServiceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

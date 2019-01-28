@@ -1,7 +1,6 @@
 using AutoMapper;
-using rhipecode.ui.Contract;
 
-namespace rhipecode.ui
+namespace MoulaClient
 {
     public class AutoMapperProfile: Profile
     {

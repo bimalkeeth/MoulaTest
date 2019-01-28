@@ -1,11 +1,11 @@
 import {Component, Inject, OnInit, OnDestroy} from '@angular/core';
-import {DrawingService } from "../services/drawingservice.service";
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {ToastrService} from "ngx-toastr";
 import "rxjs-compat/add/operator/map";
-import {ITriangularContract} from "../contract/triangularcontract";
-import * as JXG from "../../../js/jsxgraphcore.min.js"
-
+import {MoulaCustomer} from "../contract/MoulaCustomer";
+import 'ngx-toastr/toastr.css';
+import {ValidationUtil} from "../utility/ValidationUtil";
+import {CustomerServiceService} from "../services/customer-service.service";
 
 @Component({
   selector: 'app-home',
@@ -14,15 +14,21 @@ import * as JXG from "../../../js/jsxgraphcore.min.js"
 })
 export class HomeComponent implements OnInit, OnDestroy{
 
-  frmDrawingFormGroup: FormGroup;
-  inputControl: FormControl;
-  inputDataRequest:string;
-  triAngularContract:ITriangularContract;
-  constructor( @Inject(DrawingService) public drawService: DrawingService,
+  moulaCustomer:MoulaCustomer;
+  frmMoulaFormGroup: FormGroup;
+  inputIdControl: FormControl;
+  inputFirstNameControl:FormControl;
+  inputLastNameControl:FormControl;
+  inputEmailControl:FormControl;
+  inputDateOfBirthControl:FormControl;
+
+
+  constructor( @Inject(CustomerServiceService) public customerService: CustomerServiceService,
                @Inject(FormBuilder) public formBuilder: FormBuilder,
                @Inject(ToastrService) public toastr: ToastrService
-               ){
-
+               )
+  {
+    this.moulaCustomer=new MoulaCustomer();
   }
 
   ngOnDestroy(): void {
@@ -31,42 +37,78 @@ export class HomeComponent implements OnInit, OnDestroy{
 
   ngOnInit(): void {
 
-    this.inputControl = new FormControl(this.inputDataRequest,{ validators: Validators.required,updateOn: 'blur'});
-    this.frmDrawingFormGroup = new FormGroup({
-      triangularRequestCtrl: this.inputControl,
+    this.inputIdControl = new FormControl(this.moulaCustomer.Id,{updateOn: 'blur'});
+    this.inputFirstNameControl = new FormControl(this.moulaCustomer.FirstName,{ validators: Validators.required,updateOn: 'blur'});
+    this.inputLastNameControl = new FormControl(this.moulaCustomer.LastName,{ validators: Validators.required,updateOn: 'blur'});
+    this.inputEmailControl = new FormControl(this.moulaCustomer.EmailAddress,{ validators: [Validators.required,Validators.email],updateOn: 'blur'});
+    this.inputDateOfBirthControl = new FormControl(this.moulaCustomer.DateOfBirth,{ validators: Validators.required,updateOn: 'blur'});
+
+    this.frmMoulaFormGroup = new FormGroup({
+      customerIdCtrl: this.inputIdControl,
+      customerFirstNameCtrl:this.inputFirstNameControl,
+      customerLastNameCtrl:this.inputLastNameControl,
+      customerEmailCtrl:this.inputEmailControl,
+      customerDateOfBirthCtrl:this.inputDateOfBirthControl,
+
     });
-
-      }
+  }
   ProcessData():void{
+    try {
+          if(!ValidationUtil.IsEmail(this.moulaCustomer.EmailAddress)){
+            this.toastr.error('Email Address is not correct.', 'Major Error', {
+              timeOut: 3000
+            });
+            return;
+          }
+          if(!ValidationUtil.IsNotEmpty(this.moulaCustomer.DateOfBirth)){
+            this.toastr.error('Date Of Birth is not correct.', 'Major Error', {
+              timeOut: 3000
+            });
+            return;
+          }
+          if(!ValidationUtil.IsNotEmpty(this.moulaCustomer.FirstName)){
+            this.toastr.error('First Name Can not be empty.', 'Major Error', {
+              timeOut: 3000
+            });
+            return;
+          }
+          if(!ValidationUtil.IsNotEmpty(this.moulaCustomer.LastName)){
+            this.toastr.error('Last Name Can not be empty.', 'Major Error', {
+              timeOut: 3000
+            });
+            return;
+          }
 
+          let customerContacts={
+            Id:0,
+            IsPrimary:true,
+            CustomerId:0,
+            ContactId:0,
+            Contact:{Id:0,ContactTypeId:1,Contact:this.moulaCustomer.EmailAddress}
+          };
 
-    if(!this.inputDataRequest){
-      this.toastr.error('Triangular request is empty', 'Major Error', {
+          let customerAddress={
+            Id:0,
+            IsPrimary:true,
+            CustomerId:0,
+            AddressId:0,
+            Address:{Id:0,AddressTypeId:2,Street:'2-5',Street2:'Wattle Road',Suburb:'Maidstone',StateId:2,Country:'Australia'}
+          };
+          let customerRequest={
+            Id:0,
+            CustomerCode:'',
+            FirstName:this.moulaCustomer.FirstName,
+            LastName:this.moulaCustomer.LastName,
+            DateOfBirth:this.moulaCustomer.DateOfBirth,
+            CustomerContacts:[customerContacts],
+            CustomerAddress:[customerAddress]
+          };
+          this.customerService.CreateCustomer(customerRequest);
+    }
+    catch(e){
+      this.toastr.error('Error occured when creating customer.', 'Major Error', {
         timeOut: 3000
       });
-    }
-    else {
-
-
-      let result=  this.drawService.processTriangularRequest({RequestData:this.inputDataRequest});
-      if(result){
-
-        const board = JXG.JSXGraph.initBoard('jxgbox', {boundingbox: [-500, 500, 500, -500],axis: true});
-        let A = board.create('point',[result.pointA.x,result.pointA.y],{size:3,name:'A'});
-        let B= board.create('point',[result.pointB.x,result.pointB.y],{size:3,name:'B'});
-        let C= board.create('point',[result.pointC.x,result.pointC.y],{size:3,name:'C'});
-
-        let l1 = board.create('line',[A,B],{straightFirst:false, straightLast:false, lastArrow:true,strokeWidth:4,strokeColor:'#0000ff'});
-        let l2 = board.create('line',[B,C],{straightFirst:false, straightLast:false, lastArrow:true,strokeWidth:4,strokeColor:'#0000ff'});
-        let l3 = board.create('line',[C,A],{straightFirst:false, straightLast:false, lastArrow:true,strokeWidth:4,strokeColor:'#0000ff'});
-
-      }
-      else {
-        this.toastr.error('Triangular data operation failed', 'Major Error', {
-          timeOut: 3000
-        });
-      }
-
     }
   }
 

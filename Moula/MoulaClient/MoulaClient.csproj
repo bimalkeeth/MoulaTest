@@ -14,6 +14,7 @@
 
     <ItemGroup>
         <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="6.0.0" />
+        <PackageReference Include="Grpc.Core" Version="1.18.0" />
         <PackageReference Include="Microsoft.AspNetCore.App" />
         <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.1.2" PrivateAssets="All" />
         <PackageReference Include="Microsoft.AspNetCore.SpaServices.Extensions" Version="2.1.1" />
@@ -27,6 +28,11 @@
 
     <ItemGroup>
       <Folder Include="ClientApp\src\app\services" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\ProtoMediator\ProtoMediator.csproj" />
+      <ProjectReference Include="..\ServiceLocator\ServiceLocator.csproj" />
     </ItemGroup>
 
     <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">
