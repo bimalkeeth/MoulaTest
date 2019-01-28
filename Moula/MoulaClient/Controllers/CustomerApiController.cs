@@ -26,9 +26,9 @@ namespace MoulaClient.Controllers
           return  _requester.CreateCustomer(request);
         }
         [HttpGet("[action]")]
-        public async Task<IEnumerable<CustomerDetailVM>>GetTopCustomer()
+        public async Task<IEnumerable<CustomerDetailVM>>GetTopCustomer(int topCustomer)
         {
-            return await _requester.GetTopCustomers(5);
+            return await _requester.GetTopCustomers(topCustomer);
         }
     }
 }
