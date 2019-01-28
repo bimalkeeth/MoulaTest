@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
+
 namespace rhipecode
 {
     public class Startup
@@ -25,9 +26,9 @@ namespace rhipecode
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration => { configuration.RootPath = "ClientApp/dist"; });
 
-            //services.AddTransient<ITriangleManager, TriangleManager>();
-            //services.AddTransient<ITriangularFactory, TriangularFactory>();
-            //services.AddSingleton<ITriangleHelper, TriangleHelper>();
+//            services.AddTransient<ITriangleManager, TriangleManager>();
+//            services.AddTransient<ITriangularFactory, TriangularFactory>();
+//            services.AddSingleton<ITriangleHelper, TriangleHelper>();
 
         }
 
@@ -37,6 +38,7 @@ namespace rhipecode
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                
             }
             else
             {
@@ -44,7 +46,7 @@ namespace rhipecode
                 app.UseHsts();
             }
 
-            app.UseHttpsRedirection();
+            //app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseSpaStaticFiles();
 

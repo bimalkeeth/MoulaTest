@@ -12,7 +12,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BIRuleProcessor", "BIRulePr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccess", "DataAccess\DataAccess.csproj", "{7E735A71-5121-40DE-B132-26EDC878A89F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoulaUi", "MoulaUi\MoulaUi.csproj", "{1528380E-F1EA-4CA3-95A8-FFCDB5754F4B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoulaClient", "MoulaClient\MoulaClient.csproj", "{7006EB96-4766-4373-A6B0-1B4289E5BD50}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -44,9 +44,9 @@ Global
 		{7E735A71-5121-40DE-B132-26EDC878A89F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7E735A71-5121-40DE-B132-26EDC878A89F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7E735A71-5121-40DE-B132-26EDC878A89F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{1528380E-F1EA-4CA3-95A8-FFCDB5754F4B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1528380E-F1EA-4CA3-95A8-FFCDB5754F4B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1528380E-F1EA-4CA3-95A8-FFCDB5754F4B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1528380E-F1EA-4CA3-95A8-FFCDB5754F4B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7006EB96-4766-4373-A6B0-1B4289E5BD50}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7006EB96-4766-4373-A6B0-1B4289E5BD50}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7006EB96-4766-4373-A6B0-1B4289E5BD50}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7006EB96-4766-4373-A6B0-1B4289E5BD50}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

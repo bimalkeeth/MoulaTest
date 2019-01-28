@@ -20,10 +20,7 @@ namespace rhipecode
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
-                .UseKestrel(w =>
-                {
-                    w.Listen(IPAddress.Loopback, 5000); 
-                })
+                .UseKestrel(w =>{w.Listen(IPAddress.Loopback, 5000); })
                 .UseStartup<Startup>();
     }
 }

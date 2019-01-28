@@ -1,7 +1,7 @@
 using AutoMapper;
-using MoulaUi.Contract;
+using rhipecode.ui.Contract;
 
-namespace MoulaUi
+namespace rhipecode.ui
 {
     public class AutoMapperProfile: Profile
     {

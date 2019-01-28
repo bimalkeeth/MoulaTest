@@ -1,4 +1,4 @@
-namespace MoulaUi.Contract
+namespace MoulaClient.Contract
 {
     public class RequestVM
     {

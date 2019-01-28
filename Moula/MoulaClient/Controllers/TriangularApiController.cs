@@ -1,14 +1,15 @@
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
-using MoulaUi.Contract;
+using MoulaClient.Contract;
+using rhipecode.ui.Contract;
 
-namespace MoulaUi.Controllers
+namespace rhipecode.ui.Controllers
 {
     [Produces("application/json")]
     [Route("api/[controller]")]
     public class TriangularApiController : Controller
     {
-        
+       
         protected readonly IMapper _mapper;
 
         public TriangularApiController(IMapper mapper)
@@ -19,7 +20,8 @@ namespace MoulaUi.Controllers
         [HttpPut("[action]")]
         public IActionResult ProcessData([FromBody]RequestVM request)
         {
-            return null;
+            
+            return NotFound("");
         } 
     }
 }

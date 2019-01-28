@@ -1,6 +1,6 @@
 
 
-namespace MoulaUi.Contract
+namespace rhipecode.ui.Contract
 {
     public class TriangularContractVM
     {
@@ -8,6 +8,6 @@ namespace MoulaUi.Contract
         public double Base { get; set; }
         public double Left { get; set; }
         public double Right { get; set; }
-       
+        
     }
 }
