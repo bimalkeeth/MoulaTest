@@ -12,6 +12,7 @@ import {Observable, of} from "rxjs";
 })
 export class CustomerServiceService {
   data:boolean;
+  topListOfCustomer:ICustomerDetail[];
   constructor(@Inject(HttpClient) public http: HttpClient,@Inject('BASE_URL') public baseUrl: string,@Inject(ToastrService) public toastr: ToastrService){
 
   }
@@ -28,11 +29,18 @@ export class CustomerServiceService {
   //----------------------------------------------
   // Get Top Customer
   //----------------------------------------------
-  GetTopCustomers(topCustomer:number):Observable<ICustomerDetail[]>{
-    return this.http.get<ICustomerDetail[]>(this.baseUrl+"api/CustomerApi/GetTopCustomer/"+topCustomer)
-      .pipe(
-      catchError((error: any) => {
-        return of(error);
-      }));
+  GetTopCustomers(topCustomer:number):ICustomerDetail[]{
+
+    this.http.get<ICustomerDetail[]>(this.baseUrl+"api/CustomerApi/GetTopCustomer").toPromise().then(data => {
+      this.topListOfCustomer = data;
+      console.log('Promise resolved.')
+    });
+    return this.topListOfCustomer;
+
+    // return this.http.get<ICustomerDetail[]>(this.baseUrl+"api/CustomerApi/GetTopCustomer/"+topCustomer)
+    //   .pipe(
+    //   catchError((error: any) => {
+    //     return of(error);
+    //   }));
   }
 }

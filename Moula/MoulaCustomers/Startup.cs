@@ -1,5 +1,6 @@
 using AutoMapper;
 using BIRuleProcessor.Mapppers;
+using DataAccess.Entities;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -32,9 +33,12 @@ namespace MoulaCustomers
         }
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, IApplicationLifetime lifetime)
         {
-           
+             using (var serviceScope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>().CreateScope())
+            {
+              serviceScope.ServiceProvider.GetService<CustomerDbContext>().Database.EnsureCreated();
+            }
         }
-        
+       
        
     }
 }

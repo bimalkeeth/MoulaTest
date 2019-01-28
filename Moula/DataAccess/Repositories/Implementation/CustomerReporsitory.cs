@@ -28,11 +28,16 @@ namespace DataAccess.Repositories
         }
         public IEnumerable<Customers> GetCustomerWithDetailByWithOrder(int topCount)
         {
+
+           var dd= dbContext.Customers.ToList();
+                
+            
+            
             return dbContext.Customers
                 .Include(s => s.CustomerAddress)
                 .Include(s => s.CustomerContacts)
-                .Include(s => s.CustomerAddress.Select(a => a.Address))
-                .Include(s => s.CustomerContacts.Select(a => a.Contact))
+                //.Include(s => s.CustomerAddress.Select(a => a.Address))
+               // .Include(s => s.CustomerContacts.Select(a => a.Contact))
                 .OrderByDescending(w=>w.DateOfBirth).AsNoTracking().Take(topCount).ToList();
 
         }

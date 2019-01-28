@@ -44,7 +44,22 @@
   <div class="panel panel-primary">
     <div class="panel-heading">Customers</div>
     <div class="panel-body">
-
+       <table>
+         <thead>
+            <th>Customer Name</th>
+            <th>Email</th>
+            <th>DOB</th>
+            <th>CustomerCode</th>
+         </thead>
+         <tbody>
+          <tr *ngFor="let cust of topListOfCustomer" >
+            <td>{{cust.FullName}}</td>
+            <td>{{cust.Contact}}</td>
+            <td>{{cust.DateOfBirth}}</td>
+            <td>{{cust.CustomerCode}}</td>
+          </tr>
+         </tbody>
+       </table>
     </div>
   </div>
 

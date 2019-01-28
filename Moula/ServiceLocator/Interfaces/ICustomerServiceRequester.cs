@@ -18,6 +18,6 @@ namespace ServiceLocator.Interfaces
         /// </summary>
         /// <param name="topCount"></param>
         /// <returns></returns>
-        async Task<IEnumerable<CustomerDetailVM>> GetTopCustomers(int topCount);
+        Task<IEnumerable<CustomerDetailVM>> GetTopCustomers(int topCount);
     }
 }

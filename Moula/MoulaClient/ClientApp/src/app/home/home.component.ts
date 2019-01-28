@@ -6,6 +6,8 @@ import {MoulaCustomer} from "../contract/MoulaCustomer";
 import 'ngx-toastr/toastr.css';
 import {ValidationUtil} from "../utility/ValidationUtil";
 import {CustomerServiceService} from "../services/customer-service.service";
+import {map} from "rxjs/operators";
+import {ICustomerDetail} from "../contract/ICustomerDetail";
 
 @Component({
   selector: 'app-home',
@@ -21,7 +23,7 @@ export class HomeComponent implements OnInit, OnDestroy{
   inputLastNameControl:FormControl;
   inputEmailControl:FormControl;
   inputDateOfBirthControl:FormControl;
-
+  topListOfCustomer:ICustomerDetail[];
 
   constructor( @Inject(CustomerServiceService) public customerService: CustomerServiceService,
                @Inject(FormBuilder) public formBuilder: FormBuilder,
@@ -104,6 +106,11 @@ export class HomeComponent implements OnInit, OnDestroy{
             CustomerAddress:[customerAddress]
           };
           this.customerService.CreateCustomer(customerRequest);
+          //let dd= this.customerService.GetTopCustomers(3)
+           // dd.pipe(map(z=>z.forEach(e=>{
+           //     this.topListOfCustomer.push(e);
+           // })))
+
     }
     catch(e){
       this.toastr.error('Error occured when creating customer.', 'Major Error', {
